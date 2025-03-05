@@ -170,7 +170,7 @@ export default function Home() {
                   <span className="text-3xl font-bold text-white">1</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Create Your Profile</h3>
+              <h3 className="text-2xl font-bold mb-3 text-primary">Create Your Profile</h3>
               <p className="max-w-md mx-auto text-lg text-gray-600">
                 Sign up and customize your profile with the questions you want answered about yourself
               </p>
@@ -195,7 +195,7 @@ export default function Home() {
                   <span className="text-3xl font-bold text-white">2</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Share Your Link</h3>
+              <h3 className="text-2xl font-bold mb-3 text-accent">Share Your Link</h3>
               <p className="max-w-md mx-auto text-lg text-gray-600">
                 Send your personalized link to friends, family, or anyone whose feedback you value
               </p>
@@ -217,7 +217,7 @@ export default function Home() {
                   <span className="text-3xl font-bold text-white">3</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Receive Honest Feedback</h3>
+              <h3 className="text-2xl font-bold mb-3 text-secondary">Receive Honest Feedback</h3>
               <p className="max-w-md mx-auto text-lg text-gray-600">
                 Get anonymous insights that help you grow and understand how others perceive you
               </p>
