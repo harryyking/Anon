@@ -23,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="synthwave">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="max-w-7xl mx-auto">
         {children}
-      </body>
+        </div>
+        </body>
     </html>
   );
 }
