@@ -49,7 +49,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section - Kept unchanged as requested */}
       <div className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
@@ -157,116 +157,82 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Features Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 text-neutral-content">
-    <div className="container px-4 md:px-6">
-      <div className="flex flex-col items-center justify-center space-y-4 text-center">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">How It Works</h2>
-          <p className="text-muted-foreground md:text-xl">
-            Three simple steps to gain valuable insights about yourself
-          </p>
-        </div>
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 lg:gap-12">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <span className="text-2xl font-bold">1</span>
-            </div>
-            <h3 className="text-xl font-bold">Create Your Profile</h3>
-            <p className="text-muted-foreground text-center">
-              Sign up and customize your profile with questions you want answered
-            </p>
-          </div>
-          <div className="flex flex-col items-center space-y-2">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <span className="text-2xl font-bold">2</span>
-            </div>
-            <h3 className="text-xl font-bold">Share Your Link</h3>
-            <p className="text-muted-foreground text-center">
-              Send your unique link to friends, family, or colleagues
-            </p>
-          </div>
-          <div className="flex flex-col items-center space-y-2">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-              <span className="text-2xl font-bold">3</span>
-            </div>
-            <h3 className="text-xl font-bold">Receive Feedback</h3>
-            <p className="text-muted-foreground text-center">
-              Get anonymous insights about your strengths and personality
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      {/* Testimonials */}
-      <section className="py-20 px-4 bg-base-200 text-neutral-content">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">What People Are Saying</h2>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <div className="chat chat-start">
-                  <div className="chat-bubble chat-bubble-primary">
-                    "This platform helped me discover strengths I never knew I had. The anonymous feedback was so
-                    insightful!"
-                  </div>
+      {/* Updated Features Section - NGL-Inspired */}
+      <section className="w-full py-16 px-4 bg-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16">How It Works</h2>
+          
+          <div className="space-y-20">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center">
+              <div className="mb-6">
+                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-2">
+                  <span className="text-3xl font-bold text-white">1</span>
                 </div>
-                <div className="flex items-center mt-4">
-                  <div className="avatar placeholder">
-                    <div className="bg-neutral text-neutral-content rounded-full w-12">
-                      <span>JD</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-bold">John D.</p>
-                    <p className="text-sm opacity-70">Student</p>
-                  </div>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Create Your Profile</h3>
+              <p className="max-w-md mx-auto text-lg text-gray-600">
+                Sign up and customize your profile with the questions you want answered about yourself
+              </p>
+              <div className="mt-8 relative">
+                <Image
+                  src="/placeholder.svg?height=300&width=300"
+                  alt="Profile creation illustration"
+                  width={300}
+                  height={300}
+                  className="rounded-xl shadow-lg"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg">
+                  🚀
                 </div>
               </div>
             </div>
-
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <div className="chat chat-start">
-                  <div className="chat-bubble chat-bubble-secondary">
-                    "I've been using this with my team at work. It's helped us build trust and improve our
-                    communication."
-                  </div>
+            
+            {/* Step 2 */}
+            <div className="flex flex-col items-center">
+              <div className="mb-6">
+                <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mb-2">
+                  <span className="text-3xl font-bold text-white">2</span>
                 </div>
-                <div className="flex items-center mt-4">
-                  <div className="avatar placeholder">
-                    <div className="bg-neutral text-neutral-content rounded-full w-12">
-                      <span>SM</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-bold">Sarah M.</p>
-                    <p className="text-sm opacity-70">Team Lead</p>
-                  </div>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Share Your Link</h3>
+              <p className="max-w-md mx-auto text-lg text-gray-600">
+                Send your personalized link to friends, family, or anyone whose feedback you value
+              </p>
+              <div className="mt-8 relative">
+                <div className="bg-base-200 rounded-xl p-6 shadow-lg flex items-center">
+                  <span className="text-lg font-mono text-gray-700 mr-2">reflect.me/yourname</span>
+                  <button className="btn btn-sm btn-primary">Copy</button>
+                </div>
+                <div className="absolute -top-4 -right-4 bg-primary text-white p-3 rounded-full shadow-lg">
+                  🔗
                 </div>
               </div>
             </div>
-
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <div className="chat chat-start">
-                  <div className="chat-bubble chat-bubble-accent">
-                    "The emoji ratings are so fun! I love seeing how my friends perceive my personality traits."
-                  </div>
+            
+            {/* Step 3 */}
+            <div className="flex flex-col items-center">
+              <div className="mb-6">
+                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mb-2">
+                  <span className="text-3xl font-bold text-white">3</span>
                 </div>
-                <div className="flex items-center mt-4">
-                  <div className="avatar placeholder">
-                    <div className="bg-neutral text-neutral-content rounded-full w-12">
-                      <span>AK</span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-bold">Alex K.</p>
-                    <p className="text-sm opacity-70">Content Creator</p>
-                  </div>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Receive Honest Feedback</h3>
+              <p className="max-w-md mx-auto text-lg text-gray-600">
+                Get anonymous insights that help you grow and understand how others perceive you
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="bg-base-100 rounded-xl p-4 shadow-md">
+                  <p className="italic">"You're a great listener!"</p>
+                </div>
+                <div className="bg-base-100 rounded-xl p-4 shadow-md">
+                  <p className="italic">"Your creativity inspires me!"</p>
+                </div>
+                <div className="bg-base-100 rounded-xl p-4 shadow-md">
+                  <p className="italic">"I admire your determination."</p>
+                </div>
+                <div className="bg-base-100 rounded-xl p-4 shadow-md">
+                  <p className="italic">"You always brighten my day."</p>
                 </div>
               </div>
             </div>
@@ -274,72 +240,114 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer p-10 md:footer-horizontal text-neutral-content bg-base-100">
-        <div>
-          <span className="footer-title">Company</span>
-          <Link href="/about" className="link link-hover">
-            About
-          </Link>
-          <Link href="/contact" className="link link-hover">
-            Contact
-          </Link>
-          <Link href="/jobs" className="link link-hover">
-            Jobs
-          </Link>
+      {/* Updated Testimonials - NGL-inspired */}
+      <section className="py-20 px-4 bg-gradient-to-b from-base-200 to-base-300 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16">What People Are Saying</h2>
+
+          <div className="relative">
+            {/* Phone frame */}
+            <div className="w-64 h-96 bg-gray-900 rounded-3xl mx-auto p-3 shadow-2xl border-4 border-gray-800">
+              <div className="w-full h-full bg-base-100 rounded-2xl overflow-hidden p-4">
+                <div className="space-y-4">
+                  <div className="chat chat-start">
+                    <div className="chat-bubble chat-bubble-primary">
+                      "This has helped me understand how others see me. So eye-opening!"
+                    </div>
+                  </div>
+
+                  <div className="chat chat-start">
+                    <div className="chat-bubble chat-bubble-secondary">
+                      "I discovered strengths I never knew I had!"
+                    </div>
+                  </div>
+
+                  <div className="chat chat-start">
+                    <div className="chat-bubble chat-bubble-accent">
+                      "The anonymous format made people more honest. I got feedback I needed to hear."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating elements */}
+            <div className="absolute top-8 -left-4 bg-white p-4 rounded-full shadow-lg transform -rotate-6">
+              ⭐️
+            </div>
+            <div className="absolute top-32 -right-4 bg-white p-4 rounded-full shadow-lg transform rotate-12">
+              ❤️
+            </div>
+            <div className="absolute bottom-8 -left-4 bg-white p-4 rounded-full shadow-lg transform rotate-6">
+              🙌
+            </div>
+          </div>
+
+          <div className="mt-16 space-y-2">
+            <p className="text-xl font-bold">Join thousands of users discovering their true selves</p>
+            <Link href="/signup" className="btn btn-lg btn-primary inline-block">
+              Get Started Free
+            </Link>
+          </div>
         </div>
-        <div>
-          <span className="footer-title">Legal</span>
-          <Link href="/terms" className="link link-hover">
-            Terms of use
-          </Link>
-          <Link href="/privacy" className="link link-hover">
-            Privacy policy
-          </Link>
-          <Link href="/cookies" className="link link-hover">
-            Cookie policy
-          </Link>
+      </section>
+
+      {/* Updated CTA Section */}
+      <section className="py-20 px-4 bg-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold mb-4">Ready to Reflect?</h2>
+          <p className="text-xl mb-8">Get honest, anonymous feedback and discover the real you.</p>
+          
+          <div className="bg-base-200 rounded-3xl p-8 shadow-lg">
+            <div className="mb-6">
+              <input 
+                type="text" 
+                placeholder="Choose your username" 
+                className="input input-bordered w-full max-w-md"
+              />
+            </div>
+            <button className="btn btn-lg btn-primary">Create Your Profile</button>
+            <p className="mt-4 text-sm text-gray-500">No credit card required. Start in seconds.</p>
+          </div>
         </div>
-        <div>
-          <span className="footer-title">Social</span>
-          <div className="grid grid-flow-col gap-4">
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
+      </section>
+
+      {/* Updated Footer - Simplified */}
+      <footer className="p-10 bg-neutral text-neutral-content text-center">
+        <div className="max-w-md mx-auto">
+          <div className="text-3xl font-bold mb-4">Reflect</div>
+          <p className="mb-6">The personal feedback platform for real growth</p>
+          
+          <div className="flex justify-center space-x-6 mb-6">
+            <a className="btn btn-circle btn-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current">
                 <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
               </svg>
             </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
+            <a className="btn btn-circle btn-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current">
                 <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
               </svg>
             </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current"
-              >
+            <a className="btn btn-circle btn-outline">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current">
                 <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
               </svg>
             </a>
           </div>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <Link href="/about" className="link link-hover">About</Link>
+            <Link href="/privacy" className="link link-hover">Privacy</Link>
+            <Link href="/terms" className="link link-hover">Terms</Link>
+            <Link href="/contact" className="link link-hover">Contact</Link>
+            <Link href="/faq" className="link link-hover">FAQ</Link>
+            <Link href="/blog" className="link link-hover">Blog</Link>
+          </div>
+          
+          <p className="text-sm">© 2025 Reflect. All rights reserved.</p>
         </div>
       </footer>
     </main>
   )
 }
-
