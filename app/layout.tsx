@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Lilita_One} from "next/font/google";
+import { Fredoka} from "next/font/google";
 import "./globals.css";
 
-const brandFont = Lilita_One({subsets: ["latin"], weight: ["400"]})
+const brandFont = Fredoka({subsets: ["latin"]})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="synthwave">
+    <html lang="en" data-theme="fantasy">
       <body
         className={brandFont.className}
       >
