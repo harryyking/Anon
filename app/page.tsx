@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
+      <div className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
           <div className="navbar-start">
@@ -159,55 +159,47 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-base-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">How it works</h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body items-center text-center">
-                <div className="avatar placeholder mb-4">
-                  <div className="bg-primary text-primary-content rounded-full w-24">
-                    <span className="text-3xl">1</span>
-                  </div>
-                </div>
-                <h3 className="card-title text-2xl">Create Your Profile</h3>
-                <p>Sign up and customize your profile with questions you want answered</p>
-              </div>
+      <section className="w-full py-12 md:py-24 lg:py-32">
+    <div className="container px-4 md:px-6">
+      <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">How It Works</h2>
+          <p className="text-muted-foreground md:text-xl">
+            Three simple steps to gain valuable insights about yourself
+          </p>
+        </div>
+        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 lg:gap-12">
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <span className="text-2xl font-bold">1</span>
             </div>
-
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body items-center text-center">
-                <div className="avatar placeholder mb-4">
-                  <div className="bg-secondary text-secondary-content rounded-full w-24">
-                    <span className="text-3xl">2</span>
-                  </div>
-                </div>
-                <h3 className="card-title text-2xl">Share Your Link</h3>
-                <p>Send your unique link to friends, family, or colleagues</p>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body items-center text-center">
-                <div className="avatar placeholder mb-4">
-                  <div className="bg-accent text-accent-content rounded-full w-24">
-                    <span className="text-3xl">3</span>
-                  </div>
-                </div>
-                <h3 className="card-title text-2xl">Receive Feedback</h3>
-                <p>Get anonymous insights about your strengths and personality</p>
-              </div>
-            </div>
+            <h3 className="text-xl font-bold">Create Your Profile</h3>
+            <p className="text-muted-foreground text-center">
+              Sign up and customize your profile with questions you want answered
+            </p>
           </div>
-
-          <div className="text-center mt-16">
-            <Link href="/signup" className="btn btn-primary btn-lg">
-              Get Started Now
-            </Link>
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <span className="text-2xl font-bold">2</span>
+            </div>
+            <h3 className="text-xl font-bold">Share Your Link</h3>
+            <p className="text-muted-foreground text-center">
+              Send your unique link to friends, family, or colleagues
+            </p>
+          </div>
+          <div className="flex flex-col items-center space-y-2">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+              <span className="text-2xl font-bold">3</span>
+            </div>
+            <h3 className="text-xl font-bold">Receive Feedback</h3>
+            <p className="text-muted-foreground text-center">
+              Get anonymous insights about your strengths and personality
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
       {/* Testimonials */}
       <section className="py-20 px-4 bg-base-200">
@@ -284,7 +276,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="footer p-10 bg-neutral text-neutral-content">
+      <footer className="footer p-10 md:footer-horizontal bg-base-100">
         <div>
           <span className="footer-title">Company</span>
           <Link href="/about" className="link link-hover">
