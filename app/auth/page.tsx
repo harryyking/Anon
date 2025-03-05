@@ -2,11 +2,11 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='min-h-screen flex justify-center items-center'>
+    <div className='min-h-screen flex justify-center items-center bg-base-200'>
         
         <div className="card bg-base-100 w-96 shadow-sm">
-                <h2 className="card-title">
-
+                <h2 className="card-title text-center">
+                  Anon
                 </h2>
             <div className="card-body">
 
@@ -15,7 +15,9 @@ const page = () => {
                     Login with Google
                     </button>
             </div>
-            </div>
+          </div>
+
+
     </div>
   )
 }
