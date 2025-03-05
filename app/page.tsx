@@ -134,14 +134,14 @@ export default function Home() {
             honest <br /> feedback <br /> real growth
           </h1>
           <Link href="/signup" className="btn btn-lg btn-neutral">
-            Create Your Profile
+            Send an anonymous message
           </Link>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center animate-bounce">
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
           <div className="text-primary-content flex flex-col items-center">
-            <ChevronDown size={40} />
+            <ChevronDown size={50} />
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function Home() {
       </div>
 
       {/* Updated Features Section - NGL-Inspired */}
-      <section className="w-full py-16 px-4 bg-white text-center">
+      <section className="w-full py-16 px-4 text-center text-primary-content">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-16">How It Works</h2>
           
@@ -249,7 +249,7 @@ export default function Home() {
             {/* Phone frame */}
             <div className="mockup-phone border-primary">
               <div className="mockup-phone-camera"></div>
-              <div className="mockup-phone-display h-[500px]">
+              <div className="mockup-phone-display h-[40rem] w-96">
                 <img alt="wallpaper" src="https://img.daisyui.com/images/stock/453966.webp"/>
               </div>
             </div>
