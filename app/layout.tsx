@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque} from "next/font/google";
+import { Rubik} from "next/font/google";
 import "./globals.css";
 
-const brandFont = Bricolage_Grotesque({subsets: ["latin"]})
+const brandFont = Rubik({subsets: ["latin"]})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="cupcake">
+    <html lang="en" data-theme="bumblebee">
       <body
         className={brandFont.className}
       >
