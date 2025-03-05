@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Rubik} from "next/font/google";
+import { Lilita_One} from "next/font/google";
 import "./globals.css";
 
-const brandFont = Rubik({subsets: ["latin"]})
+const brandFont = Lilita_One({subsets: ["latin"], weight: ["400"]})
 
 export const metadata: Metadata = {
   title: "Create Next App",
