@@ -26,7 +26,7 @@ const Hero = () => {
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 h-72 w-72 bg-primary opacity-20 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-4 -right-4 h-72 w-72 bg-secondary opacity-20 rounded-full blur-3xl"></div>
-              <div className="relative rounded-lg border bg-base-100 p-6 shadow-lg">
+              <div className="relative bg-base-100 p-6">
                 <div className="space-y-6">
                   <h3 className="text-xl font-bold text-primary">What people are saying</h3>
 
