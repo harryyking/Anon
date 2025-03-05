@@ -71,7 +71,7 @@ const AnonForm = ({
               value={message}
               onChange={handleChange}
               placeholder={placeholder}
-              className="textarea textarea-primary textarea-lg"
+              className="textarea w-full text-primary-content min-h-44 textarea-lg"
               aria-label="Anonymous feedback"
             />
 

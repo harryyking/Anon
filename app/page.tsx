@@ -139,10 +139,9 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center animate-bounce">
           <div className="text-primary-content flex flex-col items-center">
-            <span className="text-sm mb-2">Scroll for more</span>
-            <ChevronDown size={24} />
+            <ChevronDown size={40} />
           </div>
         </div>
 
@@ -159,7 +158,7 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <section className="w-full py-12 md:py-24 lg:py-32 text-neutral-content">
     <div className="container px-4 md:px-6">
       <div className="flex flex-col items-center justify-center space-y-4 text-center">
         <div className="space-y-2">
@@ -202,7 +201,7 @@ export default function Home() {
   </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-base-200">
+      <section className="py-20 px-4 bg-base-200 text-neutral-content">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16">What People Are Saying</h2>
 
@@ -276,7 +275,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="footer p-10 md:footer-horizontal bg-base-100">
+      <footer className="footer p-10 md:footer-horizontal text-neutral-content bg-base-100">
         <div>
           <span className="footer-title">Company</span>
           <Link href="/about" className="link link-hover">
