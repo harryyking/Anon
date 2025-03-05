@@ -18,7 +18,7 @@ export default function Home() {
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="mockup-phone border-primary">
             <div className="mockup-phone-camera"></div>
-            <div className="mockup-phone-display">
+            <div className="mockup-phone-display ">
               <img alt="wallpaper" src="https://www.iclarified.com/images/news/94911/453966/453966.jpg"/>
             </div>
           </div>
