@@ -19,8 +19,9 @@ export default function RootLayout({
       <body
         className={brandFont.className}
       >
-      
+      <div className="p-2 bg-base-100">
         {children}
+      </div>
         </body>
     </html>
   );
