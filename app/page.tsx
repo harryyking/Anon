@@ -182,7 +182,7 @@ export default function Home() {
                   height={300}
                   className="rounded-xl shadow-lg"
                 />
-                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg animate-ping">
+                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg ">
                   🚀
                 </div>
               </div>
@@ -247,27 +247,10 @@ export default function Home() {
 
           <div className="relative">
             {/* Phone frame */}
-            <div className="w-64 h-96 bg-gray-900 rounded-3xl mx-auto p-3 shadow-2xl border-4 border-gray-800">
-              <div className="w-full h-full bg-base-100 rounded-2xl overflow-hidden p-4">
-                <div className="space-y-4">
-                  <div className="chat chat-start">
-                    <div className="chat-bubble chat-bubble-primary">
-                      "This has helped me understand how others see me. So eye-opening!"
-                    </div>
-                  </div>
-
-                  <div className="chat chat-start">
-                    <div className="chat-bubble chat-bubble-secondary">
-                      "I discovered strengths I never knew I had!"
-                    </div>
-                  </div>
-
-                  <div className="chat chat-start">
-                    <div className="chat-bubble chat-bubble-accent">
-                      "The anonymous format made people more honest. I got feedback I needed to hear."
-                    </div>
-                  </div>
-                </div>
+            <div className="mockup-phone border-primary">
+              <div className="mockup-phone-camera"></div>
+              <div className="mockup-phone-display h-[500px]">
+                <img alt="wallpaper" src="https://img.daisyui.com/images/stock/453966.webp"/>
               </div>
             </div>
 
