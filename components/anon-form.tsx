@@ -71,7 +71,7 @@ const AnonForm = ({
               value={message}
               onChange={handleChange}
               placeholder={placeholder}
-              className="w-full min-h-[180px] p-4 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 outline-none transition resize-none"
+              className="textarea textarea-primary textarea-lg"
               aria-label="Anonymous feedback"
             />
 
