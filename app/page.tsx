@@ -182,7 +182,7 @@ export default function Home() {
                   height={300}
                   className="rounded-xl shadow-lg"
                 />
-                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg">
+                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg animate-ping">
                   🚀
                 </div>
               </div>
@@ -272,20 +272,20 @@ export default function Home() {
             </div>
 
             {/* Floating elements */}
-            <div className="absolute top-8 -left-4 bg-white p-4 rounded-full shadow-lg transform -rotate-6">
+            <div className="absolute top-8 -left-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform -rotate-6">
               ⭐️
             </div>
-            <div className="absolute top-32 -right-4 bg-white p-4 rounded-full shadow-lg transform rotate-12">
+            <div className="absolute top-32 -right-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform rotate-12">
               ❤️
             </div>
-            <div className="absolute bottom-8 -left-4 bg-white p-4 rounded-full shadow-lg transform rotate-6">
+            <div className="absolute bottom-8 -left-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform rotate-6">
               🙌
             </div>
           </div>
 
           <div className="mt-16 space-y-2">
             <p className="text-xl font-bold">Join thousands of users discovering their true selves</p>
-            <Link href="/signup" className="btn btn-lg btn-primary inline-block">
+            <Link href="/signup" className="btn btn-lg btn-primary">
               Get Started Free
             </Link>
           </div>
