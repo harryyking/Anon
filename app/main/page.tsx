@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='bg-base-100 space-y-2 flex justify-center items-center'>
+    <div className='bg-base-100 space-y-2 flex flex-col justify-center items-center'>
         <RateInput/>
         <AnonForm/>
     </div>
