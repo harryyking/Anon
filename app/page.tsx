@@ -108,7 +108,7 @@ export default function Home() {
         <div className="absolute right-[20%] bottom-[20%] animate-float-slow transform rotate-[5deg]">
           <div className="rounded-3xl overflow-hidden border-4 border-base-100 shadow-lg">
             <Image
-              src="https://utfs.io/f/Bilqtug6OUkPpOkP6Xn9dOQqjAs0wWK8ehaxrDilESykTbnL"
+              src="https://utfs.io/f/Bilqtug6OUkPu1mct7CDbIvKwOBlr4ZEySJNVXjkR0gf6e15"
               alt="Person giving feedback"
               width={150}
               height={200}
