@@ -56,24 +56,9 @@ export default function Home() {
           <div className="navbar-start">
             <div className="text-primary-content font-bold text-3xl">Reflect</div>
           </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-primary-content">
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-              <li>
-                <Link href="/safety">Safety</Link>
-              </li>
-              <li>
-                <Link href="/blog">Blog</Link>
-              </li>
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
-            </ul>
-          </div>
+         
           <div className="navbar-end">
-            <Link href="/download" className="btn btn-accent">
+            <Link href="/auth" className="btn btn-accent">
               Get Started
             </Link>
           </div>
@@ -134,7 +119,7 @@ export default function Home() {
           <h1 className="text-primary-content text-5xl md:text-7xl font-bold leading-tight mb-6">
             honest <br /> feedback <br /> real growth
           </h1>
-          <Link href="/signup" className="btn btn-lg btn-accent">
+          <Link href="/auth" className="btn btn-lg btn-accent">
             Send an anonymous message
           </Link>
         </div>

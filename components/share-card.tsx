@@ -6,7 +6,7 @@ import { User } from '@prisma/client'
 
 const ShareCard = ({user}: {user : User}) => {
   const [copied, setCopied] = useState(false)
-  const profileLink = `reflect.me/${user.name}`
+  const profileLink = `reflect.me/${user.name.toLowerCase().concat}`
   
   const handleCopyLink = () => {
     navigator.clipboard.writeText(`https://${profileLink}`)

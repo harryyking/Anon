@@ -9,7 +9,7 @@ import { getServerSession } from 'next-auth';
 export default async function ProfilePage({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params;
   const userInfo = await prisma.user.findUnique({
-    where: {name: name},
+    where: {name: name.toLowerCase().concat()},
   })
 
   if(!userInfo)return
@@ -35,7 +35,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ name: 
           </div>
         ))
       }
-      
+
       <EmotionResults ratings={profileData}/>
 
     </div>
