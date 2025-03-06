@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-black px-4">
       {/* Ticker */}
-      <div className="text-white whitespace-nowrap overflow-hidden py-2 select-none">
+      <div className=" text-white whitespace-nowrap overflow-hidden py-2 select-none">
         <div className="inline-block animate-marquee">
           {tickerItems.map((item, index) => (
             <span key={index} className="mx-4">
@@ -49,8 +49,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center rounded-xl p-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
+      {/* Hero Section - Kept unchanged as requested */}
+      <div className="relative min-h-screen flex flex-col items-center justify-center rounded-full  p-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
           <div className="navbar-start">
@@ -145,191 +145,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Wave Divider - IMPROVED CONCAVE DESIGN */}
+        {/* Wave Divider
         <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 1440 120" 
-            className="w-full"
-            preserveAspectRatio="none"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full">
             <path
-              fill="#000000"
-              d="M0,0L48,5.3C96,11,192,21,288,37.3C384,53,480,75,576,80C672,85,768,75,864,58.7C960,43,1056,21,1152,16C1248,11,1344,21,1392,26.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+              fill="#00000"
+              fillOpacity="1"
+              d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
             ></path>
           </svg>
-        </div>
+        </div> */}
       </div>
 
-      {/* Features Section - NGL-Inspired */}
-      <section className="w-full py-16 px-4 text-center text-primary-content relative">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-16">How It Works</h2>
-          
-          <div className="space-y-20">
-            {/* Step 1 */}
-            <div className="flex flex-col items-center">
-              <div className="mb-6">
-                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-2">
-                  <span className="text-3xl font-bold text-white">1</span>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-primary">Create Your Profile</h3>
-              <p className="max-w-md mx-auto text-lg text-gray-600">
-                Sign up and customize your profile with the questions you want answered about yourself
-              </p>
-              <div className="mt-8 relative">
-                <Image
-                  src="/placeholder.svg?height=300&width=300"
-                  alt="Profile creation illustration"
-                  width={300}
-                  height={300}
-                  className="rounded-xl shadow-lg"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-full shadow-lg ">
-                  🚀
-                </div>
-              </div>
-            </div>
-            
-            {/* Step 2 */}
-            <div className="flex flex-col items-center">
-              <div className="mb-6">
-                <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mb-2">
-                  <span className="text-3xl font-bold text-white">2</span>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-accent">Share Your Link</h3>
-              <p className="max-w-md mx-auto text-lg text-gray-600">
-                Send your personalized link to friends, family, or anyone whose feedback you value
-              </p>
-              <div className="mt-8 relative">
-                <div className="bg-base-200 rounded-xl p-6 shadow-lg flex items-center">
-                  <span className="text-lg font-mono text-gray-700 mr-2">reflect.me/yourname</span>
-                  <button className="btn btn-sm btn-primary">Copy</button>
-                </div>
-                <div className="absolute -top-4 -right-4 bg-primary text-white p-3 rounded-full shadow-lg">
-                  🔗
-                </div>
-              </div>
-            </div>
-            
-            {/* Step 3 */}
-            <div className="flex flex-col items-center">
-              <div className="mb-6">
-                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mb-2">
-                  <span className="text-3xl font-bold text-white">3</span>
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-secondary">Receive Honest Feedback</h3>
-              <p className="max-w-md mx-auto text-lg text-gray-600">
-                Get anonymous insights that help you grow and understand how others perceive you
-              </p>
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="bg-base-100 rounded-xl p-4 shadow-md">
-                  <p className="italic">"You're a great listener!"</p>
-                </div>
-                <div className="bg-base-100 rounded-xl p-4 shadow-md">
-                  <p className="italic">"Your creativity inspires me!"</p>
-                </div>
-                <div className="bg-base-100 rounded-xl p-4 shadow-md">
-                  <p className="italic">"I admire your determination."</p>
-                </div>
-                <div className="bg-base-100 rounded-xl p-4 shadow-md">
-                  <p className="italic">"You always brighten my day."</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
 
-        {/* ADDED CONVEX WAVE TRANSITION to testimonials */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 1440 120" 
-            className="w-full"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="url(#gradient-testimonial)"
-              d="M0,96L48,85.3C96,75,192,53,288,58.7C384,64,480,96,576,96C672,96,768,64,864,48C960,32,1056,32,1152,48C1248,64,1344,96,1392,112L1440,128L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-            ></path>
-            <defs>
-              <linearGradient id="gradient-testimonial" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="var(--color-primary)" />
-                <stop offset="100%" stopColor="var(--color-secondary)" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-      </section>
-
-      {/* Updated Testimonials - NGL-inspired */}
-      <section className="py-20 px-4 bg-gradient-to-b from-primary to-secondary rounded-xl text-center relative">
-        {/* ADDED CONCAVE WAVE AT THE TOP */}
-        <div className="absolute top-0 left-0 right-0">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 1440 120" 
-            className="w-full"
-            preserveAspectRatio="none"
-            style={{ transform: 'rotate(180deg)' }}
-          >
-            <path
-              fill="#000000"
-              d="M0,0L48,16C96,32,192,64,288,69.3C384,75,480,53,576,58.7C672,64,768,96,864,90.7C960,85,1056,43,1152,32C1248,21,1344,43,1392,53.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-            ></path>
-          </svg>
-        </div>
-
-        <div className="max-w-4xl mx-auto mt-12">
-          <h2 className="text-4xl font-bold mb-16 text-primary-content">What People Are Saying</h2>
-
-          <div className="relative">
-            {/* Phone frame */}
-            <div className="mockup-phone border-primary mx-auto">
-              <div className="mockup-phone-camera"></div>
-              <div className="mockup-phone-display h-[40rem] w-96">
-                <img alt="wallpaper" src="https://img.daisyui.com/images/stock/453966.webp"/>
-              </div>
-            </div>
-
-            {/* Floating elements */}
-            <div className="absolute top-8 -left-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform -rotate-6">
-              ⭐️
-            </div>
-            <div className="absolute top-32 -right-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform rotate-12">
-              ❤️
-            </div>
-            <div className="absolute bottom-8 -left-4 bg-white p-4 rounded-full shadow-lg animate-bounce transform rotate-6">
-              🙌
-            </div>
-          </div>
-
-          <div className="mt-16 space-y-2">
-            <p className="text-xl font-bold text-primary-content">Join thousands of users discovering their true selves</p>
-            <Link href="/signup" className="btn btn-lg btn-neutral">
-              Get Started Free
-            </Link>
-          </div>
-        </div>
-
-        {/* ADDED CONVEX WAVE AT THE BOTTOM */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 1440 120" 
-            className="w-full"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#000000"
-              d="M0,32L60,48C120,64,240,96,360,96C480,96,600,64,720,48C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
-            ></path>
-          </svg>
-        </div>
-      </section>
 
       {/* Updated Footer - Simplified */}
       <footer className="p-10 bg-inherit text-neutral-content text-center">
