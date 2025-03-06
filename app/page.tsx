@@ -83,7 +83,7 @@ export default function Home() {
         <div className="absolute left-[10%] top-[30%] animate-float-slow transform rotate-[-10deg]">
           <div className="rounded-3xl overflow-hidden border-4 border-base-100 shadow-lg">
             <Image
-              src="https://images.pexels.com/photos/5608918/pexels-photo-5608918.jpeg?auto=compress&cs=tinysrgb&"
+              src="https://utfs.io/f/Bilqtug6OUkPpOkP6Xn9dOQqjAs0wWK8ehaxrDilESykTbnL"
               alt="Person smiling"
               width={150}
               height={200}
@@ -95,7 +95,7 @@ export default function Home() {
         <div className="absolute right-[15%] top-[20%] animate-float transform rotate-[10deg]">
           <div className="w-16 h-16 md:w-24 md:h-24">
             <Image
-              src="https://x63335ycv2.ufs.sh/f/Bilqtug6OUkPq8pTYXAKOoRWPQc8SsmEj3p4Vyfh9lx6XvTB"
+              src="https://utfs.io/f/Bilqtug6OUkPq8pTYXAKOoRWPQc8SsmEj3p4Vyfh9lx6XvTB"
               alt="Hand wave"
               width={96}
               height={96}
@@ -108,7 +108,7 @@ export default function Home() {
         <div className="absolute right-[20%] bottom-[20%] animate-float-slow transform rotate-[5deg]">
           <div className="rounded-3xl overflow-hidden border-4 border-base-100 shadow-lg">
             <Image
-              src="https://images.pexels.com/photos/3851790/pexels-photo-3851790.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="https://utfs.io/f/Bilqtug6OUkPpOkP6Xn9dOQqjAs0wWK8ehaxrDilESykTbnL"
               alt="Person giving feedback"
               width={150}
               height={200}
@@ -120,7 +120,7 @@ export default function Home() {
         <div className="absolute left-[20%] bottom-[15%] animate-float transform rotate-[-5deg]">
           <div className="w-16 h-16 md:w-20 md:h-20">
             <Image
-              src="https://x63335ycv2.ufs.sh/f/Bilqtug6OUkPwWHrR514ZDMHfNCkAg1dhEWLyenvi9x8Op50"
+              src="https://utfs.io/f/Bilqtug6OUkPwWHrR514ZDMHfNCkAg1dhEWLyenvi9x8Op50"
               alt="Star emoji"
               width={80}
               height={80}
