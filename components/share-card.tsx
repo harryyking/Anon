@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle, Copy, MessageSquare, Link as LinkIcon, Share2 } from 'lucide-react'
 import { User } from '@prisma/client'
+import Link from 'next/link'
 
 const ShareCard = ({user}: {user : User}) => {
   const [copied, setCopied] = useState(false)
@@ -139,10 +140,10 @@ const ShareCard = ({user}: {user : User}) => {
         </div>
         
         {/* View Messages Button */}
-        <button className="btn btn-primary w-full mt-4">
+        <Link className="btn btn-primary w-full mt-4" href={`https://${profileLink}`}>
           <MessageSquare size={18} className="mr-2" />
           View Anonymous Messages
-        </button>
+        </Link>
       </div>
     </div>
   )

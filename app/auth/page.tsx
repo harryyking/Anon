@@ -11,7 +11,7 @@ const AuthPage = () => {
 
   const handleSignInGoogle = async() => {
     setGoogleIsLoading(true);
-    const signInResult = await signIn("google");
+    const signInResult = await signIn("google", {callbackUrl: '/main'});
     if (!signInResult) {
       setGoogleIsLoading(false);
       return;
