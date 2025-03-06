@@ -30,7 +30,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black p-2">
+    <main className="min-h-screen overflow-hidden bg-black p-4">
       {/* Ticker */}
       <div className=" text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
         <div className="inline-block animate-marquee">
@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Kept unchanged as requested */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center rounded  px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
+      <div className="relative min-h-screen flex flex-col items-center justify-center rounded-xl  px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
           <div className="navbar-start">
@@ -146,7 +146,7 @@ export default function Home() {
         </div>
 
         {/* Wave Divider */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 bg-black">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full">
             <path
               fill="#ffffff"
