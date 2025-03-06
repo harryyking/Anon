@@ -46,7 +46,7 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
+  name          String   @unique
   email         String   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
@@ -92,9 +92,15 @@ model Rating {
   id           String      @id @default(cuid())
   raterId      String      @map("rater_id")
   rateeId      String      @map("ratee_id")
-  beauty        Int
-  intelligence Int
-  personality  Int
+  adore         Int
+  hilarious          Int
+  wow          Int
+  cool           Int
+  warm        Int
+  smart       Int
+  chill       Int
+  curious       Int
+  awkward       Int
   createdAt    DateTime   @default(now())
   rater        User     @relation("Rater", fields: [raterId], references: [id])
   ratee        User     @relation("Ratee", fields: [rateeId], references: [id])

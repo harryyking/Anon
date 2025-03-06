@@ -1,104 +1,125 @@
-// 'use server'; // Marks this file as server-only
+'use server';
 
-// import prisma from '@/lib/db';
-// import { revalidatePath } from 'next/cache';
 
-// // 1. Send a Message
-// export async function sendMessage(recipientId: number, content: string) {
-//   const session = await getSession(); // Get current user (if logged in)
-//   const senderId = session?.user.id; // Optional sender
+import { authOptions } from '@/lib/auth';
+import prisma from '@/lib/db';
+import { getServerSession } from 'next-auth';
+import { revalidatePath } from 'next/cache';
 
-//   await prisma.message.create({
-//     data: {
-//       senderId,
-//       recipientId,
-//       content,
-//     },
-//   });
+// 1. Send a Message (Visitors or Logged-in Users)
+export async function sendMessage(recipientId: string, content: string) {
+  const session = await getServerSession(authOptions); // Optional sender
+  const senderId = session?.user.id;
 
-//   // Update points for sender (if logged in) and recipient
-//   if (senderId) {
-//     await prisma.user.update({
-//       where: { id: senderId },
-//       data: { points: { increment: 1 } },
-//     });
-//   }
-//   await prisma.user.update({
-//     where: { id: recipientId },
-//     data: { points: { increment: 1 } },
-//   });
+  await prisma.message.create({
+    data: {
+      senderId, // Null if not logged in
+      recipientId,
+      content,
+    },
+  });
 
-//   revalidatePath(`/profile/${recipientId}`); // Refresh profile page
-// }
+  // Award points: 1 to sender (if logged in) and recipient
+  if (senderId) {
+    await prisma.user.update({
+      where: { id: senderId },
+      data: { points: { increment: 1 } },
+    });
+  }
+  await prisma.user.update({
+    where: { id: recipientId },
+    data: { points: { increment: 1 } },
+  });
 
-// // 2. Submit a Rating
-// export async function submitRating(rateeId: number, beauty: number, intelligence: number, personality: number) {
-//   const session = await getSession();
-//   if (!session) throw new Error('Unauthorized');
+  revalidatePath(`/profile/${recipientId}`);
+}
 
-//   const raterId = session.user.id;
-//   if (raterId === rateeId) throw new Error('Cannot rate yourself');
+// 2. Get Messages for a User
+export async function getUserMessages(userId: string) {
+  const session = await getServerSession(authOptions);
+  if (!session || session.user.id !== userId) throw new Error('Unauthorized');
 
-//   const existingRating = await prisma.rating.findUnique({
-//     where: { raterId_rateeId: { raterId, rateeId } },
-//   });
+  const messages = await prisma.message.findMany({
+    where: { recipientId: userId },
+    orderBy: { createdAt: 'desc' },
+  });
 
-//   if (existingRating) {
-//     await prisma.rating.update({
-//       where: { id: existingRating.id },
-//       data: { beauty, intelligence, personality },
-//     });
-//   } else {
-//     await prisma.rating.create({
-//       data: { raterId, rateeId, beauty, intelligence, personality },
-//     });
-//   }
+  return messages;
+}
 
-//   revalidatePath(`/profile/${rateeId}`); // Refresh profile page
-// }
+// 3. Submit Personality Ratings (Logged-in Users Only)
+export async function submitRating(
+  rateeId: string,
+  ratings: {
+    adore: number;
+    hilarious: number;
+    wow: number;
+    cool: number;
+    warm: number;
+    smart: number;
+    chill: number;
+    curious: number;
+    awkward: number;
+  }
+) {
+  const session = await getServerSession(authOptions);
+  if (!session) throw new Error('Unauthorized');
 
-// // 3. Update Settings
-// export async function updateSettings(theme: string) {
-//   const session = await getSession();
-//   if (!session) throw new Error('Unauthorized');
+  const raterId = session.user.id;
+  if (raterId === rateeId) throw new Error('Cannot rate yourself');
 
-//   await prisma.user.update({
-//     where: { id: session.user.id },
-//     data: { theme },
-//   });
+  await prisma.rating.upsert({
+    where: { raterId_rateeId: { raterId, rateeId } },
+    update: ratings,
+    create: {
+      raterId,
+      rateeId,
+      ...ratings,
+    },
+  });
 
-//   revalidatePath('/settings'); // Refresh settings page
-// }
+  revalidatePath(`/profile/${rateeId}`);
+}
 
-// // 4. Fetch Profile Data (Server-side Helper)
-// export async function getProfileData(userId: number) {
-//   const profile = await prisma.user.findUnique({
-//     where: { id: userId },
-//     select: { id: true, email: true, theme: true, points: true },
-//   });
-//   if (!profile) throw new Error('User not found');
+// 4. Get Profile Data (Messages, Ratings, and Counts)
+export async function getProfileData(userId: string) {
+  const profile = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true, email: true, theme: true, points: true },
+  });
+  if (!profile) throw new Error('User not found');
 
-//   const messages = await prisma.message.findMany({
-//     where: { recipientId: userId },
-//     orderBy: { createdAt: 'desc' },
-//   });
+  const session = await getServerSession(authOptions);
+  const isOwnProfile = session?.user.id === userId;
 
-//   const ratings = await prisma.rating.findMany({
-//     where: { rateeId: userId },
-//   });
-//   const count = ratings.length;
-//   const beautyAvg = count > 0 ? ratings.reduce((sum, r) => sum + r.beauty, 0) / count : 0;
-//   const intelligenceAvg = count > 0 ? ratings.reduce((sum, r) => sum + r.intelligence, 0) / count : 0;
-//   const personalityAvg = count > 0 ? ratings.reduce((sum, r) => sum + r.personality, 0) / count : 0;
+  const messages = isOwnProfile
+    ? await prisma.message.findMany({
+        where: { recipientId: userId },
+        orderBy: { createdAt: 'desc' },
+      })
+    : [];
 
-//   return {
-//     profile,
-//     messages,
-//     ratings: {
-//       beauty: beautyAvg.toFixed(1),
-//       intelligence: intelligenceAvg.toFixed(1),
-//       personality: personalityAvg.toFixed(1),
-//       count,
-//     },
-//   };
-// }
+  const ratings = await prisma.rating.findMany({
+    where: { rateeId: userId },
+  });
+  const count = ratings.length;
+  const averages = count > 0 ? {
+    adore: (ratings.reduce((sum, r) => sum + r.adore, 0) / count).toFixed(1),
+    hilarious: (ratings.reduce((sum, r) => sum + r.hilarious, 0) / count).toFixed(1),
+    wow: (ratings.reduce((sum, r) => sum + r.wow, 0) / count).toFixed(1),
+    cool: (ratings.reduce((sum, r) => sum + r.cool, 0) / count).toFixed(1),
+    warm: (ratings.reduce((sum, r) => sum + r.warm, 0) / count).toFixed(1),
+    smart: (ratings.reduce((sum, r) => sum + r.smart, 0) / count).toFixed(1),
+    chill: (ratings.reduce((sum, r) => sum + r.chill, 0) / count).toFixed(1),
+    curious: (ratings.reduce((sum, r) => sum + r.curious, 0) / count).toFixed(1),
+    awkward: (ratings.reduce((sum, r) => sum + r.awkward, 0) / count).toFixed(1),
+  } : {
+    adore: '0', hilarious: '0', wow: '0', cool: '0', warm: '0', smart: '0', chill: '0', curious: '0', awkward: '0',
+  };
+
+  return {
+    profile,
+    messages,
+    ratings: { ...averages, count },
+  };
+}

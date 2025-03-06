@@ -3,20 +3,25 @@
 import type React from "react"
 import { useState } from "react"
 import { Send } from "lucide-react"
+import RateInput from "./rate-input"
+import { sendMessage } from "@/actions/actions"
 
 interface AnonFormProps {
   placeholder?: string
   maxLength?: number
   onSubmit?: (message: string) => void
+  profile: string;
 }
 
 const AnonForm = ({
+  profile,
   placeholder = "Share something positive about this person...",
   maxLength = 500,
   onSubmit,
 }: AnonFormProps) => {
   const [message, setMessage] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [rate, setRate] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value
@@ -25,13 +30,13 @@ const AnonForm = ({
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault()
 
     if (message.trim().length === 0) return
 
     if (onSubmit) {
-      onSubmit(message)
+      await sendMessage(profile, message)
     }
 
     // Show success state
@@ -44,8 +49,12 @@ const AnonForm = ({
     }, 3000)
   }
 
+  const handleRateClick = (e: any) => {
+    setRate(true)
+  }
+
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-md mx-auto">
       {submitted ? (
         <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
           <div className="flex justify-center mb-4">
@@ -80,14 +89,24 @@ const AnonForm = ({
             </div>
           </div>
 
-          <div className="flex justify-end">
-            <button type="submit" disabled={message.trim().length === 0} className="btn btn-primary gap-2 px-6">
+          
+            <button type="submit" disabled={message.trim().length === 0} className="btn btn-primary gap-2 px-6 w-full">
               <Send size={18} />
               Send Anonymously
             </button>
-          </div>
+          
         </form>
       )}
+
+      <div className="divider my-4"></div>
+
+      <button className="btn btn-accent btn-lg" onClick={handleRateClick}>Rate me 🙈</button>
+      {
+        rate && (
+          <RateInput profile={profile}/>
+        )
+      }
+
     </div>
   )
 }

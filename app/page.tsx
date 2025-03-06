@@ -73,7 +73,7 @@ export default function Home() {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link href="/download" className="btn btn-neutral">
+            <Link href="/download" className="btn btn-accent">
               Get Started
             </Link>
           </div>
@@ -134,7 +134,7 @@ export default function Home() {
           <h1 className="text-primary-content text-5xl md:text-7xl font-bold leading-tight mb-6">
             honest <br /> feedback <br /> real growth
           </h1>
-          <Link href="/signup" className="btn btn-lg btn-neutral">
+          <Link href="/signup" className="btn btn-lg btn-accent">
             Send an anonymous message
           </Link>
         </div>
