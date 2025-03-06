@@ -30,7 +30,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen overflow-hidden bg-black p-4">
+    <main className="min-h-screen overflow-hidden bg-black px-4">
       {/* Ticker */}
       <div className=" text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
         <div className="inline-block animate-marquee">
@@ -241,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* Updated Testimonials - NGL-inspired */}
-      <section className="py-20 px-4 bg-gradient-to-b from-base-200 to-base-300 text-center">
+      <section className="py-20 px-4 bg-gradient-to-b from-primary to-secondary rounded-xl text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-16">What People Are Saying</h2>
 
@@ -275,25 +275,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Updated CTA Section */}
-      <section className="py-20 px-4 bg-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-5xl font-bold mb-4">Ready to Reflect?</h2>
-          <p className="text-xl mb-8">Get honest, anonymous feedback and discover the real you.</p>
-          
-          <div className="bg-base-200 rounded-3xl p-8 shadow-lg">
-            <div className="mb-6">
-              <input 
-                type="text" 
-                placeholder="Choose your username" 
-                className="input input-bordered w-full max-w-md"
-              />
-            </div>
-            <button className="btn btn-lg btn-primary">Create Your Profile</button>
-            <p className="mt-4 text-sm text-gray-500">No credit card required. Start in seconds.</p>
-          </div>
-        </div>
-      </section>
 
       {/* Updated Footer - Simplified */}
       <footer className="p-10 bg-inherit text-neutral-content text-center">
