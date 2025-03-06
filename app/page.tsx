@@ -30,9 +30,9 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen overflow-hidden">
+    <main className="min-h-screen overflow-hidden bg-black p-2">
       {/* Ticker */}
-      <div className="bg-black text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
+      <div className=" text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
         <div className="inline-block animate-marquee">
           {tickerItems.map((item, index) => (
             <span key={index} className="mx-4">
@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Kept unchanged as requested */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
+      <div className="relative min-h-screen flex flex-col items-center justify-center rounded  px-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
           <div className="navbar-start">
