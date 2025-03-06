@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka} from "next/font/google";
 import "./globals.css";
+import Provider from "@/components/provider";
 
 const brandFont = Fredoka({subsets: ["latin"]})
 
@@ -16,6 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="fantasy">
+      <Provider>
       <body
         className={brandFont.className}
       >
@@ -23,6 +25,7 @@ export default function RootLayout({
         {children}
       </div>
         </body>
+      </Provider>
     </html>
   );
 }

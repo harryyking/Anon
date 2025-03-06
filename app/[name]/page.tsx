@@ -15,7 +15,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ name: 
   if(!userInfo)return
 
   const session = await getServerSession(authOptions);
-  const profileData = await getProfileData(userInfo.name);
+  const profileData = await getProfileData(userInfo.id);
   const getMessages = await getUserMessages(userInfo.id)
 
   if(!session){
@@ -28,8 +28,15 @@ export default async function ProfilePage({ params }: { params: Promise<{ name: 
 
   return (
     <div>
-      <AnonCard/>
-      <EmotionResults/>
+      {
+        getMessages.map((messages) => (
+          <div>
+            <AnonCard messages={messages} key={messages.id}/>
+          </div>
+        ))
+      }
+      
+      <EmotionResults ratings={profileData}/>
 
     </div>
   );

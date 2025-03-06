@@ -89,15 +89,6 @@ export async function getProfileData(userId: string) {
   });
   if (!profile) throw new Error('User not found');
 
-  const session = await getServerSession(authOptions);
-  const isOwnProfile = session?.user.id === userId;
-
-  const messages = isOwnProfile
-    ? await prisma.message.findMany({
-        where: { recipientId: userId },
-        orderBy: { createdAt: 'desc' },
-      })
-    : [];
 
   const ratings = await prisma.rating.findMany({
     where: { rateeId: userId },
@@ -118,8 +109,6 @@ export async function getProfileData(userId: string) {
   };
 
   return {
-    profile,
-    messages,
     ratings: { ...averages, count },
   };
 }

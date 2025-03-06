@@ -1,20 +1,10 @@
+import { Message } from '@prisma/client'
 import React from 'react'
-type AnonMessage = {
-  id: string
-  message: string
-  timestamp: Date
-  likes: number
-}
 
-interface AnonCardProps {
-  message?: AnonMessage
-  withActions?: boolean
-  className?: string
-}
 
 const AnonCard = ({ 
- message
-}: AnonCardProps) => {
+ messages
+}: {messages : Message}) => {
   
   // Format the timestamp
   const formattedTime = new Intl.DateTimeFormat('en-US', {
@@ -23,7 +13,7 @@ const AnonCard = ({
     hour: 'numeric',
     minute: '2-digit',
     hour12: true
-  }).format(message?.timestamp)
+  }).format(messages.createdAt)
 
   return (
     <div className={`card bg-base-100 shadow-md hover:shadow-lg transition-all`}>
@@ -39,7 +29,7 @@ const AnonCard = ({
         </div>
         
         {/* Message content */}
-        <p className="text-sm md:text-base">{message?.message}</p>
+        <p className="text-sm md:text-base">{messages.content}</p>
         
       </div>
     </div>
