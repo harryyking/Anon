@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden">
       {/* Ticker */}
-      <div className="bg-neutral text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
+      <div className="bg-black text-neutral-content whitespace-nowrap overflow-hidden py-2 select-none">
         <div className="inline-block animate-marquee">
           {tickerItems.map((item, index) => (
             <span key={index} className="mx-4">

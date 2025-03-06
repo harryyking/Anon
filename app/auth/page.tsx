@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const AuthPage = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center bg-base-200 p-4">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-b from-primary to-secondary p-4">
       <div className="card bg-base-100 w-96 shadow-xl">
         <div className="card-body items-center text-center p-6">
           {/* Logo */}
