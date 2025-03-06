@@ -11,15 +11,6 @@ const AuthPage = () => {
           {/* Logo */}
           <div className="mb-4">
             <div className="flex items-center justify-center">
-              <svg 
-                className="w-8 h-8 text-primary" 
-                viewBox="0 0 24 24" 
-                fill="currentColor"
-              >
-                <path d="M12 4.5c-4.1 0-7.5 3.4-7.5 7.5v3c0 3.2 2.1 5.8 5 6.7v-2.2c-1.7-.7-3-2.5-3-4.5v-3c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5v3c0 2-1.3 3.8-3 4.5v2.2c2.9-.9 5-3.5 5-6.7v-3c0-4.1-3.4-7.5-7.5-7.5z" />
-                <path d="M12 13c.8 0 1.5-.7 1.5-1.5S12.8 10 12 10s-1.5.7-1.5 1.5.7 1.5 1.5 1.5z" />
-                <path d="M12 14c-1.7 0-3 1.3-3 3v7h6v-7c0-1.7-1.3-3-3-3z" />
-              </svg>
               <Link href="/" className="text-3xl font-bold ml-2 text-primary">Reflect</Link>
             </div>
             <p className="text-base-content/70 mt-2">Sign in to continue to your account</p>

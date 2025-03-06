@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Kept unchanged as requested */}
-      <div className="relative min-h-screen flex flex-col items-center justify-center rounded-3xl  p-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
+      <div className="relative min-h-screen flex flex-col items-center justify-center rounded-4xl  p-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
         <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
           <div className="navbar-start">
