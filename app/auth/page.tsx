@@ -11,14 +11,14 @@ const AuthPage = () => {
 
   const handleSignInGoogle = async() => {
     setGoogleIsLoading(true);
-    const signInResult = await signIn("google", {callbackUrl: '/store'});
+    const signInResult = await signIn("google", {callbackUrl: '/main'});
     if (!signInResult) {
       setGoogleIsLoading(false);
       return;
     }
 
     if(signInResult.ok) {
-      router.push("/store");
+      router.push("/main");
 
     }
   }
