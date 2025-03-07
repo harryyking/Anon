@@ -54,7 +54,7 @@ const AnonForm = ({
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-2">
+    <div className="w-full max-w-md mx-auto ">
       {submitted ? (
         <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
           <div className="flex justify-center mb-4">

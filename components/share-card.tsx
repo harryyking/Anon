@@ -38,7 +38,7 @@ const ShareCard = ({user}: {user : User}) => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-bold">{user.name || "User"}</h2>
+            <h2 className="text-xl font-bold text-neutral">{user.name || "User"}</h2>
             {user.email && (
               <p className="text-gray-500 text-sm">{user.email}</p>
             )}

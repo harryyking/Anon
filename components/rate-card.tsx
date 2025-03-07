@@ -35,7 +35,7 @@ const emotions: Emotion[] = [
 ];
 
 const EmotionResults = ({
-  title = "How people rated this",
+  title = "How people rated ypu",
   totalVotes,
   showPercentage = true,
   ratings,
@@ -67,7 +67,7 @@ const EmotionResults = ({
   }
 
   return (
-    <div className="card w-full bg-base-100 shadow-xl text-neutral max-w-3xl mx-auto">
+    <div className="card w-full bg-base-100 shadow-xl text-neutral lg:max-w-3xl mx-auto">
       <div className="card-body">
         <h2 className="card-title text-center justify-center mb-4">{title}</h2>
 
