@@ -23,7 +23,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   // If no session, show only the AnonForm with proper layout
   if (!session) {
     return (
-      <div className="min-h-screen w-full flex justify-center items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-base-200 to-base-300">
+      <div className="min-h-screen w-full flex justify-center items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
         <div className="w-full max-w-3xl mx-auto">
           <AnonForm profile={userInfo.id} />
         </div>

@@ -62,22 +62,20 @@ const AnonForm = ({
       
       <div className="tabs tabs-box mb-6">
         <button
-          className={`tab ${activeTab === "message" ? "tab tab-active" : ""}`}
+          className={`tab bg-secondary text-secondary-content ${activeTab === "message" ? "tab tab-active " : ""}`}
           onClick={() => setActiveTab("message")}
         >
-          <Send size={16} className="mr-2" />
-          Send Message
+          Send Message 👂🏽
         </button>
-        <button className={`tab ${activeTab === "rate" ? "tab-active" : ""}`} onClick={() => setActiveTab("rate")}>
-          <Star size={16} className="mr-2" />
-          Rate Profile
+        <button className={`tab bg-secondary text-secondary-content${activeTab === "rate" ? "tab-active" : ""}`} onClick={() => setActiveTab("rate")}>
+          Rate Me 🙈
         </button>
       </div>
 
       {activeTab === "message" && (
         <>
           {submitted ? (
-            <div className="bg-success/10 border border-success rounded-xl p-6 text-center">
+            <div className="bg-success/10 border border-success rounded-xl p-6 text-center text-neutral">
               <div className="flex justify-center mb-4">
                 <CheckCircle className="h-12 w-12 text-success" />
               </div>
@@ -88,7 +86,7 @@ const AnonForm = ({
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 text-neutral">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-medium">Your Anonymous Message</span>
@@ -102,7 +100,7 @@ const AnonForm = ({
                   value={message}
                   onChange={handleChange}
                   placeholder={placeholder}
-                  className={`textarea textarea-bordered w-full min-h-32 focus:textarea-primary ${isOverLimit ? "textarea-error" : ""}`}
+                  className={`textarea textarea-bordered text-neutral w-full min-h-32 focus:textarea-primary ${isOverLimit ? "textarea-error" : ""}`}
                   aria-label="Anonymous feedback"
                   maxLength={maxLength + 10} // Allow slight overflow but highlight as error
                 />
