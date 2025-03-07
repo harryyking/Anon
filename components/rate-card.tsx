@@ -67,7 +67,7 @@ const EmotionResults = ({
   }
 
   return (
-    <div className="card w-full bg-base-100 shadow-xl">
+    <div className="card w-full bg-base-100 shadow-xl text-neutral">
       <div className="card-body">
         <h2 className="card-title text-center justify-center mb-4">{title}</h2>
 

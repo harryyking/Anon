@@ -20,9 +20,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   }
 
   const session = await getServerSession(authOptions);
-  const profileData = await getProfileData(userInfo.id);
-  const getMessages = await getUserMessages(userInfo.id);
-
+  
   // If no session, show only the AnonForm
   if (!session) {
     return (
@@ -31,10 +29,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
       </div>
     );
   }
+  const profileData = await getProfileData(userInfo.id);
+  const getMessages = await getUserMessages(userInfo.id);
+
 
   // If session exists, show messages and ratings
   return (
-    <div className='bg-gradient-to-b from-primary to-secondary'>
+    <div className='bg-gradient-to-b from-primary to-secondary p-2 flex justify-center items-center'>
 
     <div className='max-w-3xl mx-auto space-y-2'>
       {getMessages.map((message) => (
