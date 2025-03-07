@@ -28,7 +28,7 @@ interface RateInputProps {
   profile: string;
 }
 
-const RateInput = ({ question = "How do you feel about them?", onChange, profile }: RateInputProps) => {
+const RateInput = ({ question = "How do you feel about me?", onChange, profile }: RateInputProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
