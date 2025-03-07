@@ -60,14 +60,14 @@ const AnonForm = ({
       {/* Tab Navigation */}
 
       
-      <div className="tabs tabs-box mb-6">
+      <div className="tabs tabs-box gap-4 mb-6">
         <button
-          className={`tab bg-secondary text-secondary-content ${activeTab === "message" ? "tab tab-active " : ""}`}
+          className={`tab  ${activeTab === "message" ? "tab tab-active bg-secondary text-secondary-content " : ""}`}
           onClick={() => setActiveTab("message")}
         >
           Send Message 👂🏽
         </button>
-        <button className={`tab bg-secondary text-secondary-content${activeTab === "rate" ? "tab-active" : ""}`} onClick={() => setActiveTab("rate")}>
+        <button className={`tab ${activeTab === "rate" ? "tab-active bg-secondary text-secondary-content" : ""}`} onClick={() => setActiveTab("rate")}>
           Rate Me 🙈
         </button>
       </div>
