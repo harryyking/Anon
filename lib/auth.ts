@@ -29,12 +29,12 @@ export const authOptions: NextAuthOptions = {
         try {
           // Check if the user exists before attempting to update
           const existingUser = await prisma.user.findUnique({
-            where: { email: profile.email },
+            where: { email: user.email! },
           });
 
           if (existingUser) {
             await prisma.user.update({
-              where: { email: profile.email },
+              where: { email: user.email! },
               data: { slug: slug },
             });
           } else {
