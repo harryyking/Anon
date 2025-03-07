@@ -58,7 +58,6 @@ model User {
   theme        String     @default("light")
   messagesSent Message[]  @relation("Sender")
   messagesReceived Message[] @relation("Recipient")
-  ratingsGiven Rating[]    @relation("Rater")
   ratingsReceived Rating[] @relation("Ratee")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -91,7 +90,6 @@ model Message {
 
 model Rating {
   id           String      @id @default(cuid())
-  raterId      String      @map("rater_id")
   rateeId      String      @map("ratee_id")
   adore         Int
   hilarious          Int
@@ -103,7 +101,6 @@ model Rating {
   curious       Int
   awkward       Int
   createdAt    DateTime   @default(now())
-  rater        User     @relation("Rater", fields: [raterId], references: [id])
   ratee        User     @relation("Ratee", fields: [rateeId], references: [id])
-  @@unique([raterId, rateeId])
+  @@unique(rateeId)
 }

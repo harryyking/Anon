@@ -8,31 +8,23 @@ import { revalidatePath } from 'next/cache';
 
 // 1. Send a Message (Visitors or Logged-in Users)
 export async function sendMessage(recipientId: string, content: string) {
-  const session = await getServerSession(authOptions); // Optional sender
-  const senderId = session?.user.id;
+  
+  const slug = await prisma.user.findUnique({
+    where: {id: recipientId},
+    select: {slug: true}
+  })
 
   await prisma.message.create({
     data: {
-      senderId, // Null if not logged in
-      recipientId,
+      recipientId: recipientId,
       content,
     },
   });
 
-  // Award points: 1 to sender (if logged in) and recipient
-  if (senderId) {
-    await prisma.user.update({
-      where: { id: senderId },
-      data: { points: { increment: 1 } },
-    });
+  revalidatePath(`/${slug?.slug}`);
   }
-  await prisma.user.update({
-    where: { id: recipientId },
-    data: { points: { increment: 1 } },
-  });
 
-  revalidatePath(`/profile/${recipientId}`);
-}
+
 
 // 2. Get Messages for a User
 export async function getUserMessages(userId: string) {
@@ -62,23 +54,22 @@ export async function submitRating(
     awkward: number;
   }
 ) {
-  const session = await getServerSession(authOptions);
-  if (!session) throw new Error('Unauthorized');
 
-  const raterId = session.user.id;
-  if (raterId === rateeId) throw new Error('Cannot rate yourself');
+  const user = await prisma.user.findUnique({
+    where: {id: rateeId},
+    select: {slug: true}
+  })
 
   await prisma.rating.upsert({
-    where: { raterId_rateeId: { raterId, rateeId } },
+    where: { rateeId:  rateeId  },
     update: ratings,
     create: {
-      raterId,
       rateeId,
       ...ratings,
     },
   });
 
-  revalidatePath(`/profile/${rateeId}`);
+  revalidatePath(`/${user?.slug}`);
 }
 
 // 4. Get Profile Data (Messages, Ratings, and Counts)
