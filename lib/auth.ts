@@ -21,25 +21,22 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, profile }) {
-      if (profile && profile.name && profile.email) {
-        const slug = createProfileSlug(profile.name);
-
-        // Update the user's slug if it doesn’t exist or has changed
-        await prisma.user.update({
-          where: { id: user.id },
-          data: { slug },
-        }).catch((error) => {
-          // If the user doesn’t exist yet, the adapter will create it
-          console.error('Error updating slug:', error);
-        });
-      } else {
-        console.error('Profile name or email missing.');
-      }
+    async signIn() {
 
       return true; // Allow the sign-in to proceed
     },
+
     async session({ session, user }) {
+
+      const slug = createProfileSlug(user.name!);
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { slug },
+      }).catch((error) => {
+        console.error('Error updating slug:', error);
+      });
+
+
       session.user.id = user.id;
       return session;
     },
