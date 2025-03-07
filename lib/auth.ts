@@ -22,7 +22,7 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, profile }) {
+    async signIn({ user, profile, account }) {
       if (profile && profile.name) {
         const slug = createProfileSlug(profile.name);
 
@@ -49,6 +49,43 @@ export const authOptions: NextAuthOptions = {
                   slug: slug,
                 },
               });
+          }
+           // Check if a user with the same email exists
+          if (profile.email) {
+            const emailUser = await prisma.user.findUnique({
+              where: { email: profile.email },
+            });
+
+            if (emailUser && emailUser.id !== user.id) {
+              // User with same email exists, link accounts
+              await prisma.account.create({
+                data: {
+                  userId: emailUser.id,
+                  type: account?.type!,
+                  provider: account?.provider!,
+                  providerAccountId: account?.providerAccountId!,
+                  access_token: account?.access_token!,
+                  expires_at: account?.expires_at,
+                  id_token: account?.id_token,
+                  refresh_token: account?.refresh_token,
+                  scope: account?.scope,
+                  session_state: account?.session_state,
+                  token_type: account?.token_type,
+                },
+              });
+              //update the user id of the account that was just created to the user id of the new user.
+              await prisma.account.update({
+                where: {
+                  provider_providerAccountId: {
+                    provider: account?.provider!,
+                    providerAccountId: account?.providerAccountId!,
+                  },
+                },
+                data: {
+                  userId: user.id
+                }
+              })
+            }
           }
         } catch (error) {
           console.error('Error handling user slug:', error);
