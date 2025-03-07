@@ -56,19 +56,19 @@ const AnonForm = ({
   }
 
   return (
-    <div className="w-full max-w-md mx-auto bg-base-100 rounded-xl shadow-sm p-6">
+    <div className="bg-base-100 rounded-xl shadow-sm p-6">
       {/* Tab Navigation */}
 
       
       <div className="tabs tabs-box gap-4 mb-6">
         <button
-          className={`tab  ${activeTab === "message" ? "tab-active bg-secondary " : ""}`}
+          className={`tab  ${activeTab === "message" ? "tab-active bg-secondary-content " : ""}`}
           onClick={() => setActiveTab("message")}
         >
           Send Message 👂🏽
         </button>
-        <button className={`tab ${activeTab === "rate" ? "tab-active bg-secondary" : ""}`} onClick={() => setActiveTab("rate")}>
-          Rate Me 🙈
+        <button className={`tab ${activeTab === "rate" ? "tab-active bg-secondary-content" : ""}`} onClick={() => setActiveTab("rate")}>
+          Evaluate Me 🙈
         </button>
       </div>
 
