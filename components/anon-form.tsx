@@ -1,8 +1,9 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
-import { Send } from "lucide-react"
+import { Send, Star, CheckCircle, Loader2 } from "lucide-react"
 import RateInput from "./rate-input"
 import { sendMessage } from "@/actions/actions"
 
@@ -10,7 +11,7 @@ interface AnonFormProps {
   placeholder?: string
   maxLength?: number
   onSubmit?: (message: string) => void
-  profile: string;
+  profile: string
 }
 
 const AnonForm = ({
@@ -20,93 +21,118 @@ const AnonForm = ({
   onSubmit,
 }: AnonFormProps) => {
   const [message, setMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [rate, setRate] = useState(false);
+  const [showRateInput, setShowRateInput] = useState(false)
+  const [activeTab, setActiveTab] = useState<"message" | "rate">("message")
+
+  const characterCount = message.length
+  const isOverLimit = characterCount > maxLength
+  const isEmpty = message.trim().length === 0
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = e.target.value
-    if (value.length <= maxLength) {
-      setMessage(value)
-    }
+    setMessage(e.target.value)
   }
 
-  const handleSubmit = async(e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (isEmpty || isOverLimit) return
 
-    if (message.trim().length === 0) return
-
-    if (onSubmit) {
+    try {
+      setIsSubmitting(true)
       await sendMessage(profile, message)
-    }
-
-    // Show success state
-    setSubmitted(true)
-
-    // Reset form after delay
-    setTimeout(() => {
+      setSubmitted(true)
       setMessage("")
-      setSubmitted(false)
-    }, 3000)
+    } catch (error) {
+      console.error("Failed to send message:", error)
+      // You could add error state handling here
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
-  const handleRateClick = (e: any) => {
-    setRate(true)
+  const resetForm = () => {
+    setSubmitted(false)
   }
 
   return (
-    <div className="w-full max-w-md mx-auto ">
-      {submitted ? (
-        <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-green-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <div className="w-full max-w-md mx-auto bg-base-100 rounded-xl shadow-sm p-6">
+      {/* Tab Navigation */}
+      <div className="tabs tabs-boxed mb-6">
+        <button
+          className={`tab ${activeTab === "message" ? "tab-active" : ""}`}
+          onClick={() => setActiveTab("message")}
+        >
+          <Send size={16} className="mr-2" />
+          Send Message
+        </button>
+        <button className={`tab ${activeTab === "rate" ? "tab-active" : ""}`} onClick={() => setActiveTab("rate")}>
+          <Star size={16} className="mr-2" />
+          Rate Profile
+        </button>
+      </div>
+
+      {activeTab === "message" && (
+        <>
+          {submitted ? (
+            <div className="bg-success/10 border border-success rounded-xl p-6 text-center">
+              <div className="flex justify-center mb-4">
+                <CheckCircle className="h-12 w-12 text-success" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Thank you!</h3>
+              <p className="text-base-content/80 mb-4">Your anonymous message has been sent successfully.</p>
+              <button onClick={resetForm} className="btn btn-outline btn-success btn-sm">
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-medium">Your Anonymous Message</span>
+                  <span
+                    className={`label-text-alt ${isOverLimit ? "text-error" : characterCount > maxLength * 0.8 ? "text-warning" : "text-base-content/60"}`}
+                  >
+                    {characterCount}/{maxLength}
+                  </span>
+                </label>
+                <textarea
+                  value={message}
+                  onChange={handleChange}
+                  placeholder={placeholder}
+                  className={`textarea textarea-bordered w-full min-h-32 focus:textarea-primary ${isOverLimit ? "textarea-error" : ""}`}
+                  aria-label="Anonymous feedback"
+                  maxLength={maxLength + 10} // Allow slight overflow but highlight as error
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isEmpty || isOverLimit || isSubmitting}
+                className="btn btn-primary w-full"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Thank you!</h3>
-          <p className="text-gray-600">Your anonymous message has been sent successfully.</p>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="relative">
-            <textarea
-              value={message}
-              onChange={handleChange}
-              placeholder={placeholder}
-              className="textarea w-full text-primary-content min-h-44 textarea-lg"
-              aria-label="Anonymous feedback"
-            />
-
-            <div className="absolute bottom-3 right-3 text-xs text-gray-400">
-              {message.length}/{maxLength}
-            </div>
-          </div>
-
-          
-            <button type="submit" disabled={message.trim().length === 0} className="btn btn-primary gap-2 px-6 w-full">
-              <Send size={18} />
-              Send Anonymously
-            </button>
-          
-        </form>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={18} />
+                    Send Anonymously
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+        </>
       )}
 
-      <div className="divider my-4"></div>
-
-      <button className="btn btn-accent btn-lg w-full" onClick={handleRateClick}>Rate me 🙈</button>
-      {
-        rate && (
-          <RateInput profile={profile}/>
-        )
-      }
-
+      {activeTab === "rate" && (
+        <div className="animate-fadeIn">
+          <RateInput profile={profile} />
+        </div>
+      )}
     </div>
   )
 }

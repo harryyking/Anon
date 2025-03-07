@@ -6,7 +6,7 @@ type Emotion = {
   emoji: string;
   label: string;
   color: string;
-  key: string; // Add a key to map emotions to rating properties
+  key: string;
 };
 
 type EmotionVote = {
@@ -14,12 +14,11 @@ type EmotionVote = {
   count: number;
 };
 
-
 interface EmotionResultsProps {
   title?: string;
-  totalVotes?: number;
+  totalVotes?: number; // Optional override, not used here since we calculate it
   showPercentage?: boolean;
-  ratings: any ; // Accept a single Rating object
+  ratings: any; // Should match Rating model from Prisma
 }
 
 const emotions: Emotion[] = [
@@ -35,8 +34,8 @@ const emotions: Emotion[] = [
 ];
 
 const EmotionResults = ({
-  title = "How people rated ypu",
-  totalVotes,
+  title = "How people rated you",
+  totalVotes: _totalVotes, // Ignore this prop since we calculate it
   showPercentage = true,
   ratings,
 }: EmotionResultsProps) => {
@@ -45,26 +44,29 @@ const EmotionResults = ({
   const [highestVote, setHighestVote] = useState<EmotionVote | null>(null);
 
   useEffect(() => {
-    if (ratings) {
-      const emotionVotes = emotions.map((emotion) => ({
-        emotion: emotion,
-        count: Number(ratings[emotion.key]), // Access properties directly from ratings
-      }));
+    if (!ratings) {
+      setVotesData(emotions.map((emotion) => ({ emotion, count: 0 })));
+      setCalculatedTotalVotes(0);
+      setHighestVote(null);
+      return;
+    }
 
-      const total = emotionVotes.reduce((sum, item) => sum + item.count, 0);
-      setCalculatedTotalVotes(total);
-      setVotesData(emotionVotes);
+    const emotionVotes = emotions.map((emotion) => ({
+      emotion,
+      count: Number(ratings[emotion.key]) || 0, // Default to 0 if undefined or NaN
+    }));
 
-      if (emotionVotes.length > 0) {
-        const sortedVotes = [...emotionVotes].sort((a, b) => b.count - a.count);
-        setHighestVote(sortedVotes[0]);
-      }
+    const total = emotionVotes.reduce((sum, item) => sum + item.count, 0);
+    setVotesData(emotionVotes);
+    setCalculatedTotalVotes(total);
+
+    if (total > 0) {
+      const sortedVotes = [...emotionVotes].sort((a, b) => b.count - a.count);
+      setHighestVote(sortedVotes[0]);
+    } else {
+      setHighestVote(null);
     }
   }, [ratings]);
-
-  if (!ratings) {
-    return <div>Loading ratings...</div>; // Or handle no ratings case
-  }
 
   return (
     <div className="card w-full bg-base-100 shadow-xl text-neutral lg:max-w-3xl mx-auto">
@@ -77,21 +79,27 @@ const EmotionResults = ({
         </div>
 
         {/* Highest voted emotion */}
-        {highestVote && (
+        {highestVote && calculatedTotalVotes > 0 ? (
           <div className="flex flex-col items-center mb-6">
             <div className="stat-title text-center">Most Common Rating</div>
             <div className="flex items-center justify-center mt-2">
-              <div className={`stat-value text-4xl p-4 rounded-full flex items-center justify-center ${highestVote.emotion.color.split(" ")[0]}`}>
+              <div
+                className={`stat-value text-4xl p-4 rounded-full flex items-center justify-center ${
+                  highestVote.emotion.color.split(" ")[0]
+                }`}
+              >
                 {highestVote.emotion.emoji}
               </div>
               <div className="ml-4">
                 <div className="font-bold text-lg">{highestVote.emotion.label}</div>
                 <div className="text-sm opacity-70">
-                  {calculatedTotalVotes > 0 ? Math.round((highestVote.count / calculatedTotalVotes) * 100) : 0}% of votes
+                  {Math.round((highestVote.count / calculatedTotalVotes) * 100)}% of votes
                 </div>
               </div>
             </div>
           </div>
+        ) : (
+          <div className="text-center mb-6 opacity-70">No votes yet</div>
         )}
 
         {/* All emotions progress bars */}
@@ -113,7 +121,7 @@ const EmotionResults = ({
                     className={`progress ${getDaisyUIColorClass(item.emotion.color)} w-full`}
                     value={percentage}
                     max="100"
-                  ></progress>
+                  />
                 </div>
               </div>
             );
