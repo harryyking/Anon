@@ -6,10 +6,20 @@ import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 
-export default async function ProfilePage({ params }: { params: Promise<{ name: string }> }) {
-  const { name } = await params;
+
+function createProfileSlug(fullName: string): string {
+  if (!fullName) return "";
+  const slug = fullName
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+  return slug;
+}
+
+export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const userInfo = await prisma.user.findUnique({
-    where: {name: name.toLowerCase().concat()},
+    where: {slug: slug},
   })
 
   if(!userInfo)return

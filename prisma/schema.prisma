@@ -46,10 +46,11 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
-  name          String   @unique
+  name          String   
   email         String   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
+  slug          String   @unique
   
   // One-to-One relationship with Store
 
