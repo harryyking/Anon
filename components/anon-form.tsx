@@ -62,12 +62,12 @@ const AnonForm = ({
       
       <div className="tabs tabs-box gap-4 mb-6">
         <button
-          className={`tab  ${activeTab === "message" ? "tab tab-active btn-secondary w-full " : ""}`}
+          className={`tab  ${activeTab === "message" ? "tab-active bg-secondary " : ""}`}
           onClick={() => setActiveTab("message")}
         >
           Send Message 👂🏽
         </button>
-        <button className={`tab ${activeTab === "rate" ? "tab tab-active btn-secondary w-full" : ""}`} onClick={() => setActiveTab("rate")}>
+        <button className={`tab ${activeTab === "rate" ? "tab-active bg-secondary" : ""}`} onClick={() => setActiveTab("rate")}>
           Rate Me 🙈
         </button>
       </div>
