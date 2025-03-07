@@ -1,50 +1,67 @@
-import { notFound } from 'next/navigation';
-import { sendMessage, submitRating, getProfileData, getUserMessages } from '@/actions/actions';
-import AnonCard from '@/components/anon-card';
-import AnonForm from '@/components/anon-form';
-import EmotionResults from '@/components/rate-card';
-import { authOptions } from '@/lib/auth';
-import prisma from '@/lib/db';
-import { getServerSession } from 'next-auth';
-
+import { notFound } from "next/navigation"
+import { getProfileData, getUserMessages } from "@/actions/actions"
+import AnonCard from "@/components/anon-card"
+import AnonForm from "@/components/anon-form"
+import EmotionResults from "@/components/rate-card"
+import { authOptions } from "@/lib/auth"
+import prisma from "@/lib/db"
+import { getServerSession } from "next-auth"
 
 export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+  const { slug } = await params
   const userInfo = await prisma.user.findUnique({
     where: { slug },
-  });
+  })
 
   // If no user is found for the slug, trigger a 404
   if (!userInfo) {
-    notFound(); // Explicitly handle invalid slug
+    notFound() // Explicitly handle invalid slug
   }
 
-  const session = await getServerSession(authOptions);
-  
-  // If no session, show only the AnonForm
+  const session = await getServerSession(authOptions)
+
+  // If no session, show only the AnonForm with proper layout
   if (!session) {
     return (
-      <div className='p-2 min-h-screen flex justify-center items-center'>
-        <AnonForm profile={userInfo.id} />
-      </div>
-    );
-  }
-  const profileData = await getProfileData(userInfo.id);
-  const getMessages = await getUserMessages(userInfo.id);
-
-
-  // If session exists, show messages and ratings
-  return (
-    <div className='bg-gradient-to-b from-primary to-secondary p-2 flex justify-center items-center'>
-
-    <div className='space-y-2'>
-      {getMessages.map((message) => (
-        <div key={message.id} className='space-y-4'>
-          <AnonCard messages={message} />
+      <div className="min-h-screen w-full flex justify-center items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-base-200 to-base-300">
+        <div className="w-full max-w-3xl mx-auto">
+          <AnonForm profile={userInfo.id} />
         </div>
-      ))}
-      <EmotionResults ratings={profileData} />
+      </div>
+    )
+  }
+
+  // Fetch data for authenticated users
+  const profileData = await getProfileData(userInfo.id)
+  const messages = await getUserMessages(userInfo.id)
+
+  // If session exists, show messages and ratings with improved layout
+  return (
+    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Profile stats/ratings - takes 1/3 of the space on large screens */}
+          <div className="lg:col-span-1">
+            <EmotionResults ratings={profileData} />
+          </div>
+
+          {/* Messages - takes 2/3 of the space on large screens */}
+          <div className="lg:col-span-2 space-y-4">
+            <h2 className="text-2xl font-bold text-white mb-4">Anonymous Messages</h2>
+
+            {messages.length > 0 ? (
+              messages.map((message) => <AnonCard key={message.id} messages={message} />)
+            ) : (
+              <div className="bg-base-100 rounded-xl p-6 text-center shadow-md">
+                <p className="text-base-content/80">
+                  No messages yet. Share this profile to receive anonymous feedback!
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-  );
+  )
 }
+

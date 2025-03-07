@@ -58,9 +58,11 @@ const AnonForm = ({
   return (
     <div className="w-full max-w-md mx-auto bg-base-100 rounded-xl shadow-sm p-6">
       {/* Tab Navigation */}
-      <div className="tabs tabs-boxed mb-6">
+
+      
+      <div className="tabs tabs-box mb-6">
         <button
-          className={`tab ${activeTab === "message" ? "tab-active" : ""}`}
+          className={`tab ${activeTab === "message" ? "tab tab-active" : ""}`}
           onClick={() => setActiveTab("message")}
         >
           <Send size={16} className="mr-2" />
