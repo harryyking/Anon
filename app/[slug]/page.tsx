@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { sendMessage, submitRating, getProfileData, getUserMessages } from '@/actions/actions';
 import AnonCard from '@/components/anon-card';
 import AnonForm from '@/components/anon-form';
@@ -7,47 +8,39 @@ import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 
 
-function createProfileSlug(fullName: string): string {
-  if (!fullName) return "";
-  const slug = fullName
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-  return slug;
-}
-
 export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const userInfo = await prisma.user.findUnique({
-    where: {slug: slug},
-  })
+    where: { slug },
+  });
 
-  if(!userInfo)return
+  // If no user is found for the slug, trigger a 404
+  if (!userInfo) {
+    notFound(); // Explicitly handle invalid slug
+  }
 
   const session = await getServerSession(authOptions);
   const profileData = await getProfileData(userInfo.id);
-  const getMessages = await getUserMessages(userInfo.id)
+  const getMessages = await getUserMessages(userInfo.id);
 
-  if(!session){
+  // If no session, show only the AnonForm
+  if (!session) {
     return (
       <div>
-        <AnonForm profile={userInfo.id}/>
+        <AnonForm profile={userInfo.id} />
       </div>
-    )
+    );
   }
 
+  // If session exists, show messages and ratings
   return (
     <div>
-      {
-        getMessages.map((messages) => (
-          <div>
-            <AnonCard messages={messages} key={messages.id}/>
-          </div>
-        ))
-      }
-
-      <EmotionResults ratings={profileData}/>
-
+      {getMessages.map((message) => (
+        <div key={message.id}>
+          <AnonCard messages={message} />
+        </div>
+      ))}
+      <EmotionResults ratings={profileData} />
     </div>
   );
 }
