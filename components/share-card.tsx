@@ -31,7 +31,7 @@ const ShareCard = ({user}: {user : User}) => {
                   className="object-cover"
                 />
               ) : (
-                <div className="flex items-center justify-center h-full bg-primary text-white text-xl font-bold">
+                <div className="flex items-center justify-center h-full bg-primary text-neutral text-xl font-bold">
                   {user.name?.charAt(0).toUpperCase() || "U"}
                 </div>
               )}
