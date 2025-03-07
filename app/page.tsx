@@ -52,7 +52,7 @@ export default function Home() {
       {/* Hero Section - Kept unchanged as requested */}
       <div className="relative min-h-screen flex flex-col items-center justify-center rounded-4xl  p-4 overflow-hidden bg-gradient-to-b from-primary to-secondary">
         {/* Navigation */}
-        <div className="navbar absolute top-0 left-0 z-10 bg-transparent">
+        <div className="navbar absolute top-0 left-0 z-10 bg-transparent px-4">
           <div className="navbar-start">
             <div className="text-primary-content font-bold text-3xl">Reflect</div>
           </div>
