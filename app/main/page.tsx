@@ -22,7 +22,7 @@ const page = async() => {
 
 
   return (
-    <div className='bg-gradient-to-b from-primary to-secondary space-y-2 flex flex-col justify-center items-center min-h-screen'>
+    <div className='bg-gradient-to-b from-primary to-secondary space-y-2 p-2 flex flex-col justify-center items-center min-h-screen'>
        
         <ShareCard user={userInfo}/>
     </div>

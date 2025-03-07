@@ -16,7 +16,7 @@ const AnonCard = ({
   }).format(messages.createdAt)
 
   return (
-    <div className={`card bg-base-100 shadow-md hover:shadow-lg transition-all`}>
+    <div className={`card bg-base-100 shadow-md hover:shadow-lg transition-all max-w-3xl mx-auto`}>
       <div className="card-body p-4">
         {/* Anonymous icon and timestamp */}
         <div className="flex items-center mb-2">

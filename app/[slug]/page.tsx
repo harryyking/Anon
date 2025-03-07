@@ -24,7 +24,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   // If no session, show only the AnonForm
   if (!session) {
     return (
-      <div>
+      <div className='p-2 min-h-screen flex justify-center items-center'>
         <AnonForm profile={userInfo.id} />
       </div>
     );
@@ -37,7 +37,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   return (
     <div className='bg-gradient-to-b from-primary to-secondary p-2 flex justify-center items-center'>
 
-    <div className='max-w-3xl mx-auto space-y-2'>
+    <div className='space-y-2'>
       {getMessages.map((message) => (
         <div key={message.id} className='space-y-4'>
           <AnonCard messages={message} />

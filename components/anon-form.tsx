@@ -54,7 +54,7 @@ const AnonForm = ({
   }
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto p-2">
       {submitted ? (
         <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
           <div className="flex justify-center mb-4">
@@ -100,7 +100,7 @@ const AnonForm = ({
 
       <div className="divider my-4"></div>
 
-      <button className="btn btn-accent btn-lg" onClick={handleRateClick}>Rate me 🙈</button>
+      <button className="btn btn-accent btn-lg w-full" onClick={handleRateClick}>Rate me 🙈</button>
       {
         rate && (
           <RateInput profile={profile}/>

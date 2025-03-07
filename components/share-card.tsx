@@ -23,7 +23,7 @@ const ShareCard = ({user}: {user : User}) => {
           <div className="avatar">
             <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden">
               {user.image ? (
-                <Image 
+                <img 
                   src={user.image}
                   alt={user.name || "User"}
                   width={64}
