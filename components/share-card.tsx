@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const ShareCard = ({user}: {user : User}) => {
   const [copied, setCopied] = useState(false)
-  const profileLink = `reflect.me/${user.slug}`
+  const profileLink = `anon-peach.vercel.app/${user.slug}`
   
   const handleCopyLink = () => {
     navigator.clipboard.writeText(`https://${profileLink}`)
