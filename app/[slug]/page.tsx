@@ -34,6 +34,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
   // If session exists, show messages and ratings
   return (
+    <div className='bg-gradient-to-b from-primary to-secondary'>
+
     <div className='max-w-3xl mx-auto space-y-2'>
       {getMessages.map((message) => (
         <div key={message.id} className='space-y-4'>
@@ -41,6 +43,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         </div>
       ))}
       <EmotionResults ratings={profileData} />
+    </div>
     </div>
   );
 }
