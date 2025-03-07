@@ -34,9 +34,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
   // If session exists, show messages and ratings
   return (
-    <div>
+    <div className='max-w-3xl mx-auto space-y-2'>
       {getMessages.map((message) => (
-        <div key={message.id}>
+        <div key={message.id} className='space-y-4'>
           <AnonCard messages={message} />
         </div>
       ))}
