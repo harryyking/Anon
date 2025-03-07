@@ -50,7 +50,7 @@ model User {
   email         String   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
-  slug          String   @unique
+  slug          String   @unique  @default("slug")
   
   // One-to-One relationship with Store
 
