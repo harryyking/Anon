@@ -27,10 +27,20 @@ export const authOptions: NextAuthOptions = {
         const slug = createProfileSlug(profile.name);
 
         try {
-          await prisma.user.update({
+          // Check if the user exists before attempting to update
+          const existingUser = await prisma.user.findUnique({
             where: { id: user.id },
-            data: { slug: slug },
           });
+
+          if (existingUser) {
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { slug: slug },
+            });
+          } else {
+            console.error(`User with ID ${user.id} not found.`);
+            // Optionally, handle the case where the user doesn't exist
+          }
         } catch (error) {
           console.error('Error updating user slug:', error);
           // Handle the error appropriately (e.g., log, show a message)
