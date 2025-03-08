@@ -91,15 +91,15 @@ model Message {
 model Rating {
   id           String      @id @default(cuid())
   rateeId      String      @map("ratee_id")
-  adore         Int
-  hilarious          Int
-  wow          Int
-  cool           Int
-  warm        Int
-  smart       Int
-  chill       Int
-  curious       Int
-  awkward       Int
+  adore         Int       @default(0)
+  hilarious          Int  @default(0)
+  wow          Int        @default(0)
+  cool           Int      @default(0)
+  warm        Int         @default(0)
+  smart       Int         @default(0)
+  chill       Int         @default(0)
+  curious       Int       @default(0)
+  awkward       Int       @default(0)
   createdAt    DateTime   @default(now())
   ratee        User     @relation("Ratee", fields: [rateeId], references: [id])
   @@unique(rateeId)

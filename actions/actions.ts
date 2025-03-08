@@ -55,55 +55,77 @@ export async function submitRating(
   }
 ) {
   const user = await prisma.user.findUnique({
-    where: {id: rateeId},
-    select: {slug: true}
-  })
-  
+    where: { id: rateeId },
+    select: { slug: true },
+  });
+
   if (!user) {
     throw new Error("User not found");
   }
-  
-  // Simply create a new rating each time
-  await prisma.rating.create({
-    data: {
+
+  // Use upsert to either create or increment the rating counts
+  await prisma.rating.upsert({
+    where: { rateeId }, // One rating row per user
+    update: {
+      adore: { increment: ratings.adore },
+      hilarious: { increment: ratings.hilarious },
+      wow: { increment: ratings.wow },
+      cool: { increment: ratings.cool },
+      warm: { increment: ratings.warm },
+      smart: { increment: ratings.smart },
+      chill: { increment: ratings.chill },
+      curious: { increment: ratings.curious },
+      awkward: { increment: ratings.awkward },
+    },
+    create: {
       rateeId,
       ...ratings,
-      // Optional: Add a timestamp to track when ratings were submitted
-      createdAt : new Date()
+      createdAt: new Date(),
     },
   });
-  
+
   revalidatePath(`/${user.slug}`);
 }
-
 // 4. Get Profile Data (Messages, Ratings, and Counts)
 export async function getProfileData(userId: string) {
   const profile = await prisma.user.findUnique({
     where: { id: userId },
-    select: { id: true, email: true, theme: true, points: true },
+    select: { id: true, email: true, theme: true, points: true, slug: true },
   });
-  if (!profile) throw new Error('User not found');
+  if (!profile) throw new Error("User not found");
 
-
-  const ratings = await prisma.rating.findMany({
+  const rating = await prisma.rating.findUnique({
     where: { rateeId: userId },
+    select: {
+      adore: true,
+      hilarious: true,
+      wow: true,
+      cool: true,
+      warm: true,
+      smart: true,
+      chill: true,
+      curious: true,
+      awkward: true,
+    }, 
   });
-  const count = ratings.length;
-  const averages = count > 0 ? {
-    adore: (ratings.reduce((sum, r) => sum + r.adore, 0) / count).toFixed(1),
-    hilarious: (ratings.reduce((sum, r) => sum + r.hilarious, 0) / count).toFixed(1),
-    wow: (ratings.reduce((sum, r) => sum + r.wow, 0) / count).toFixed(1),
-    cool: (ratings.reduce((sum, r) => sum + r.cool, 0) / count).toFixed(1),
-    warm: (ratings.reduce((sum, r) => sum + r.warm, 0) / count).toFixed(1),
-    smart: (ratings.reduce((sum, r) => sum + r.smart, 0) / count).toFixed(1),
-    chill: (ratings.reduce((sum, r) => sum + r.chill, 0) / count).toFixed(1),
-    curious: (ratings.reduce((sum, r) => sum + r.curious, 0) / count).toFixed(1),
-    awkward: (ratings.reduce((sum, r) => sum + r.awkward, 0) / count).toFixed(1),
-  } : {
-    adore: '0', hilarious: '0', wow: '0', cool: '0', warm: '0', smart: '0', chill: '0', curious: '0', awkward: '0',
+
+  const ratings = rating || {
+    adore: 0,
+    hilarious: 0,
+    wow: 0,
+    cool: 0,
+    warm: 0,
+    smart: 0,
+    chill: 0,
+    curious: 0,
+    awkward: 0,
   };
 
   return {
-    ratings: { ...averages, count },
+    profile,
+    ratings: {
+      ...ratings,
+      count: Object.values(ratings).reduce((sum, val) => sum + val, 0), // Total votes
+    },
   };
 }
