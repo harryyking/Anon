@@ -16,20 +16,20 @@ const AnonCard = ({
   }).format(messages.createdAt)
 
   return (
-    <div className={`card bg-base-100 shadow-md hover:shadow-lg transition-all max-w-3xl mx-auto`}>
+    <div className={`card bg-base-100 text-neutral shadow-md hover:shadow-lg transition-all max-w-3xl mx-auto`}>
       <div className="card-body p-4">
         {/* Anonymous icon and timestamp */}
         <div className="flex items-center mb-2">
           <div className="avatar placeholder">
-            <div className="bg-neutral text-neutral-content rounded-full w-8">
-              <span className="text-xs">?</span>
+            <div className="bg-neutral flex items-center justify-center text-neutral-content rounded-full w-8">
+              <span className="text-center">?</span>
             </div>
           </div>
           <div className="ml-2 text-xs opacity-70">Anonymous • {formattedTime}</div>
         </div>
         
         {/* Message content */}
-        <p className="text-sm md:text-base">{messages.content}</p>
+        <p className="text-sm md:text-base text-neutral">{messages.content}</p>
         
       </div>
     </div>
