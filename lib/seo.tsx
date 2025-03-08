@@ -40,7 +40,7 @@ export const getSEOTags = ({
       // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
       images: [
         {
-          url: 'https://utfs.io/f/xQbdaz3ivwOMlzPEdVevF75j6XELPdozUHSeB2Jbha9mZTc0',
+          url: 'https://utfs.io/f/Bilqtug6OUkPgpeLcXEJxDfltwLnUvjW3O1TGVH8k94ac5mz',
           width: 600,
           height: 660,
         },
