@@ -25,27 +25,49 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   // If no session, show only the AnonForm with proper layout
   if (!session) {
     return (
-      <div className="min-h-screen w-full flex flex-col justify-center space-y-4 relative items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
-        <div className="space-y-4 flex flex-col items-center justify-center ">
-          <Link href='/' className="flex gap-4">
-        <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
-        width={40}
-        height={40}
-        />
-        <h2>Reflect</h2>
+      <div className="min-h-screen w-full flex flex-col justify-between p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
+        {/* Header */}
+        <div className="w-full max-w-3xl mx-auto pt-8 md:pt-12">
+          <Link href="/" className="flex gap-2 items-center justify-center mb-8">
+            <Image
+              src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP"
+              alt="logo"
+              width={40}
+              height={40}
+              className="rounded-md"
+            />
+            <h2 className="text-xl font-bold text-white">Reflect</h2>
           </Link>
+        </div>
 
-        <h1 className="text-3xl md:text-5xl text-center font-semibold">Tell me how you feel, <br />send me an anonymous message</h1>
-        
-      </div>
-        <div className="w-full max-w-3xl mx-auto">
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl mx-auto">
+          <h1 className="text-3xl md:text-5xl text-center font-semibold text-white mb-8">
+            Tell me how you feel, <br />
+            send me an anonymous message
+          </h1>
+
           <AnonForm profile={userInfo.id} />
         </div>
 
-        <footer>
-        <p className="text-center">Discover how friends feel about you with anonymous messages & fun ratings—Adore, Hilarious, Wow & more. Share your link & get real feedback! </p>
-        </footer>
-        <Link href="https://www.x.com/HarryArthu77860" target="_blank" rel="noopener noreferrer" className="underline p-2 absolute bottom-0">Made by Harry👑</Link>
+        {/* Footer */}
+        <div className="w-full max-w-3xl mx-auto mt-12 pt-6 border-t border-white/10">
+          <p className="text-center text-white/80 text-sm md:text-base mb-8">
+            Discover how friends feel about you with anonymous messages & fun ratings—Adore, Hilarious, Wow & more.
+            Share your link & get real feedback!
+          </p>
+
+          <div className="text-center">
+            <Link
+              href="https://www.x.com/HarryArthu77860"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-white/90 hover:text-white transition-colors py-1 px-3 rounded-full bg-white/10 hover:bg-white/20"
+            >
+              Made by Harry👑
+            </Link>
+          </div>
+        </div>
       </div>
     )
   }
@@ -56,15 +78,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
   // If session exists, show messages and ratings with improved layout
   return (
-    <div className="min-h-screen w-full space-y-4 bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
-      <div className="space-y-2 text-center">
-          <Link href='/main' className="mx-auto flex justify-center">
-        <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
-        width={60}
-        height={60}
-        />
-          </Link>
-      </div>
+    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
       <div className="w-full max-w-3xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Profile stats/ratings - takes 1/3 of the space on large screens */}

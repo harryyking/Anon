@@ -22,7 +22,7 @@ const AnonCard = ({
         <div className="flex items-center mb-2">
           <div className="avatar">
             <div className="bg-accent rounded-full w-8">
-              <p className='text-center mx-auto'>👻</p>
+              <p className='text-center m-auto'>👻</p>
             </div>
           </div>
           <div className="ml-2 text-xs opacity-70">Anonymous • {formattedTime}</div>
