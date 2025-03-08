@@ -6,6 +6,7 @@ import EmotionResults from "@/components/rate-card"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/db"
 import { getServerSession } from "next-auth"
+import Link from "next/link"
 
 export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -27,6 +28,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         <div className="w-full max-w-3xl mx-auto">
           <AnonForm profile={userInfo.id} />
         </div>
+
+        <Link href="https://www.x.com/HarryArthu77860" target="_blank" rel="noopener noreferrer" className="bg-white shadow-sm rounded p-2 fixed bottom-0">Made by Harry👑</Link>
       </div>
     )
   }
