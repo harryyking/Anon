@@ -8,14 +8,14 @@ import prisma from "@/lib/db";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import Image from "next/image";
-import { Metadata } from "next";
+import { getSEOTags } from "@/lib/seo";
 
 // Define metadata for the !session case
-export const metadata: Metadata = {
+export const metadata = getSEOTags({
   title: "Tell me how you feel, send me an anonymous message",
   description: "Send anonymous messages to share your feelings. Fun, private feedback tool—get started now!",
   keywords: "anonymous messaging, private feedback, send message, social tool, reflect app",
-};
+});
 
 export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -76,34 +76,44 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
     );
-  }
+  } else {
+    try {
+      const profileData = await getProfileData(userInfo.id);
+      const messages = await getUserMessages(userInfo.id);
 
-  const profileData = await getProfileData(userInfo.id);
-  const messages = await getUserMessages(userInfo.id);
-
-  return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
-      <div className="w-full max-w-3xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
-            <EmotionResults ratings={profileData} />
-          </div>
-
-          <div className="lg:col-span-2 space-y-4">
-            <h2 className="text-2xl font-bold text-white mb-4">Anonymous Messages</h2>
-
-            {messages.length > 0 ? (
-              messages.map((message) => <AnonCard key={message.id} messages={message} />)
-            ) : (
-              <div className="bg-base-100 rounded-xl p-6 text-center shadow-md">
-                <p className="text-base-content/80">
-                  No messages yet. Share this profile to receive anonymous feedback!
-                </p>
+      return (
+        <div className="min-h-screen w-full bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
+          <div className="w-full max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <EmotionResults ratings={profileData} />
               </div>
-            )}
+
+              <div className="lg:col-span-2 space-y-4">
+                <h2 className="text-2xl font-bold text-white mb-4">Anonymous Messages</h2>
+
+                {messages.length > 0 ? (
+                  messages.map((message) => <AnonCard key={message.id} messages={message} />)
+                ) : (
+                  <div className="bg-base-100 rounded-xl p-6 text-center shadow-md">
+                    <p className="text-base-content/80">
+                      No messages yet. Share this profile to receive anonymous feedback!
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+      );
+    } catch (error) {
+      console.error("Error fetching profile data or messages:", error);
+      return (
+        <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-primary to-secondary p-4">
+          <h1 className="text-2xl font-bold text-white mb-4">Something went wrong</h1>
+          <p className="text-white/80">We couldn’t load your profile. Please try again later.</p>
+        </div>
+      );
+    }
+  }
 }
