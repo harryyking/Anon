@@ -25,12 +25,12 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   // If no session, show only the AnonForm with proper layout
   if (!session) {
     return (
-      <div className="min-h-screen w-full flex justify-center relative items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
-        <div className="space-y-2 flex flex-col items-center">
+      <div className="min-h-screen w-full flex flex-col justify-center relative items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
+        <div className="space-y-2 text-center">
           <Link href='/'>
         <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
-        width={80}
-        height={80}
+        width={60}
+        height={60}
         />
           </Link>
 
@@ -56,8 +56,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
       <div className="space-y-2 text-center">
           <Link href='/main'>
         <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
-        width={80}
-        height={80}
+        width={60}
+        height={60}
         />
           </Link>
       </div>
