@@ -26,9 +26,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   if (!session) {
     return (
       <div className="min-h-screen w-full flex justify-center relative items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
-        <div className="space-y-2 text-center">
+        <div className="space-y-2 flex flex-col items-center">
           <Link href='/'>
-        <Image src="https://utfs.io/f/Bilqtug6OUkPpOkP6Xn9dOQqjAs0wWK8ehaxrDilESykTbnL" alt="logo" 
+        <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
         width={80}
         height={80}
         />
@@ -55,7 +55,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
     <div className="min-h-screen w-full bg-gradient-to-b from-primary to-secondary py-8 px-4 sm:px-6 md:px-8">
       <div className="space-y-2 text-center">
           <Link href='/main'>
-        <Image src="https://utfs.io/f/Bilqtug6OUkPpOkP6Xn9dOQqjAs0wWK8ehaxrDilESykTbnL" alt="logo" 
+        <Image src="https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP" alt="logo" 
         width={80}
         height={80}
         />
