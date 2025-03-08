@@ -20,9 +20,9 @@ const AnonCard = ({
       <div className="card-body p-4">
         {/* Anonymous icon and timestamp */}
         <div className="flex items-center mb-2">
-          <div className="avatar placeholder">
-            <div className="bg-base-300 flex items-center justify-center rounded-full w-8">
-              <Contact className="text-white" size={16}/>
+          <div className="avatar">
+            <div className="bg-accent rounded-full w-8">
+              👻
             </div>
           </div>
           <div className="ml-2 text-xs opacity-70">Anonymous • {formattedTime}</div>
