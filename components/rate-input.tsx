@@ -114,7 +114,7 @@ const RateInput = ({ question = "How do you feel about me?", onChange, profile }
       {isSubmitting && (
         <div className="mt-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm border">
-            <span className="text-sm font-medium text-gray-700">Submitting...</span>
+            <span className="text-sm font-medium text-gray-700">Rating...</span>
           </div>
         </div>
       )}

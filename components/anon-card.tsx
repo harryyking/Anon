@@ -1,6 +1,6 @@
 import { Message } from '@prisma/client'
 import React from 'react'
-
+import { Contact } from 'lucide-react'
 
 const AnonCard = ({ 
  messages
@@ -21,8 +21,8 @@ const AnonCard = ({
         {/* Anonymous icon and timestamp */}
         <div className="flex items-center mb-2">
           <div className="avatar placeholder">
-            <div className="bg-neutral flex items-center justify-center text-neutral-content rounded-full w-8">
-              <span className="text-center">?</span>
+            <div className="bg-base-300 flex items-center justify-center text-neutral-content rounded-full w-8">
+              <Contact size={16}/>
             </div>
           </div>
           <div className="ml-2 text-xs opacity-70">Anonymous • {formattedTime}</div>

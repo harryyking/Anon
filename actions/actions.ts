@@ -54,22 +54,26 @@ export async function submitRating(
     awkward: number;
   }
 ) {
-
   const user = await prisma.user.findUnique({
     where: {id: rateeId},
     select: {slug: true}
   })
-
-  await prisma.rating.upsert({
-    where: { rateeId:  rateeId  },
-    update: ratings,
-    create: {
+  
+  if (!user) {
+    throw new Error("User not found");
+  }
+  
+  // Simply create a new rating each time
+  await prisma.rating.create({
+    data: {
       rateeId,
       ...ratings,
+      // Optional: Add a timestamp to track when ratings were submitted
+      createdAt : new Date()
     },
   });
-
-  revalidatePath(`/${user?.slug}`);
+  
+  revalidatePath(`/${user.slug}`);
 }
 
 // 4. Get Profile Data (Messages, Ratings, and Counts)
