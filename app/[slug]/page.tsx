@@ -24,12 +24,12 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   // If no session, show only the AnonForm with proper layout
   if (!session) {
     return (
-      <div className="min-h-screen w-full flex justify-center items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
+      <div className="min-h-screen w-full flex justify-center relative items-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
         <div className="w-full max-w-3xl mx-auto">
           <AnonForm profile={userInfo.id} />
         </div>
 
-        <Link href="https://www.x.com/HarryArthu77860" target="_blank" rel="noopener noreferrer" className="bg-white shadow-sm rounded p-2 fixed bottom-0">Made by Harry👑</Link>
+        <Link href="https://www.x.com/HarryArthu77860" target="_blank" rel="noopener noreferrer" className="underline shadow-sm p-2 absolute bottom-0">Made by Harry👑</Link>
       </div>
     )
   }
