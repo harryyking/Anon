@@ -122,4 +122,5 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
     </div>
- 
+  );
+}
