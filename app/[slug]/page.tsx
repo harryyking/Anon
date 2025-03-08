@@ -29,7 +29,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
   const session = await getServerSession(authOptions);
 
-  if (!session) {
+  if (!session || !session.user || !session.user.email) {
     return (
       <div className="min-h-screen w-full flex flex-col justify-between p-4 sm:p-6 md:p-8 bg-gradient-to-b from-primary to-secondary">
         {/* Header */}

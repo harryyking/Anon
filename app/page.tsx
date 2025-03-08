@@ -58,7 +58,7 @@ export default function Home() {
           </div>
          
           <div className="navbar-end">
-            <Link href="/auth" className="btn btn-accent">
+            <Link href="/auth" className="btn btn-secondary">
               Get Started
             </Link>
           </div>
@@ -119,7 +119,7 @@ export default function Home() {
           <h1 className="text-primary-content text-5xl md:text-7xl font-bold leading-tight mb-6">
             honest <br /> feedback <br /> real growth
           </h1>
-          <Link href="/auth" className="btn btn-lg btn-accent">
+          <Link href="/auth" className="btn btn-lg btn-secondary">
             Send an anonymous message
           </Link>
         </div>
