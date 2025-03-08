@@ -8,7 +8,6 @@ import prisma from "@/lib/db";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import Image from "next/image";
-import { Metadata } from "next";
 import { getSEOTags } from "@/lib/seo";
 
 // Define metadata for the default (non-owner) case
@@ -30,7 +29,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
   // Check if the logged-in user is the profile owner
   const session = await getServerSession(authOptions);
-  const isOwner = session?.user.id === userInfo.id;
+  const isOwner = session?.user.email === userInfo.email;
 
   // Fetch owner-specific data only if they are the owner
   let profileData = null;
@@ -123,5 +122,4 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
     </div>
-  );
-}
+ 
