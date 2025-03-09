@@ -105,7 +105,7 @@ const RateInput = ({ question = "How do you feel about me?", onChange, profile }
           <div className="inline-flex items-center gap-2 bg-white px-3 py-1 rounded-full shadow-sm border">
             <span className="text-xl">{emotions[selectedIndex].emoji}</span>
             <p className="text-sm font-medium text-gray-700">
-              You feel <span className="font-bold">{emotions[selectedIndex].label}</span>
+              You are <span className="font-bold">{emotions[selectedIndex].label}</span>
             </p>
           </div>
         </div>
