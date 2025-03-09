@@ -60,7 +60,7 @@ const AnonForm = ({
       {/* Tab Navigation */}
 
       
-      <div className="tabs tabs-box gap-4 mb-6">
+      <div className="tabs tabs-box  gap-4 mb-6">
         <button
           className={`tab text-neutral ${activeTab === "message" ? "tab-active  " : ""}`}
           onClick={() => setActiveTab("message")}
