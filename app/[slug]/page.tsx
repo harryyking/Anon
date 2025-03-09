@@ -70,7 +70,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
         </h1>
 
         {/* AnonForm is always available */}
-        { isOwner && (
+        { !isOwner && (
         <div className="mb-8">
           <AnonForm profile={userInfo.id} />
         </div>
