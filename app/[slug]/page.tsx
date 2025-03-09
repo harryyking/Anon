@@ -15,6 +15,18 @@ export const metadata = getSEOTags({
   title: "Tell me how you feel, send me an anonymous message",
   description: "Send anonymous messages to share your feelings. Fun, private feedback tool—get started now!",
   keywords: "anonymous messaging, private feedback, send message, social tool, reflect app",
+  openGraph: {
+    title: "Tell me how you feel, send me an anonymous message",
+    description: "Fun tool to send anonymous feedback—try it now!",
+    images: [
+      {
+        url: "https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP",
+        width: 40,
+        height: 40,
+        alt: "Reflect Logo",
+      },
+    ],
+  },
 });
 
 export default async function ProfilePage({ params }: { params: Promise<{ slug: string }> }) {
