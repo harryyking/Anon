@@ -9,14 +9,14 @@ const brandFont = Fredoka({subsets: ["latin"]})
 export const metadata = getSEOTags({
   twitter: {
 
-    images: "https://utfs.io/f/Bilqtug6OUkPgpeLcXEJxDfltwLnUvjW3O1TGVH8k94ac5mz"
+    images: "https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP"
   },
     openGraph: {
       title: "Tell me how you feel, send me an anonymous message",
       description: "Fun tool to send anonymous feedback—try it now!",
       images: [
         {
-          url: "https://utfs.io/f/Bilqtug6OUkPgpeLcXEJxDfltwLnUvjW3O1TGVH8k94ac5mz",
+          url: "https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP",
           width: 40,
           height: 40,
           alt: "Reflect Logo",
