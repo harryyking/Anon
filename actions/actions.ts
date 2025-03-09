@@ -87,7 +87,7 @@ export async function submitRating(
   revalidatePath(`/${user.slug}`);
 }
 // 4. Get Profile Data (Messages, Ratings, and Counts)
-export async function getProfileData(userId: string) {
+export async function getRatings(userId: string) {
   const profile = await prisma.user.findUnique({
     where: { id: userId },
     select: { id: true, email: true, theme: true, points: true, slug: true },

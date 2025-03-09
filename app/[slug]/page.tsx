@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProfileData, getUserMessages } from "@/actions/actions";
+import { getRatings, getUserMessages } from "@/actions/actions";
 import AnonCard from "@/components/anon-card";
 import AnonForm from "@/components/anon-form";
 import EmotionResults from "@/components/rate-card";
@@ -36,7 +36,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   let messages: any[] = [];
   if (isOwner) {
     try {
-      profileData = await getProfileData(userInfo.id);
+      profileData = await getRatings(userInfo.id);
       messages = await getUserMessages(userInfo.id);
     } catch (error) {
       console.error("Error fetching profile data or messages:", error);
