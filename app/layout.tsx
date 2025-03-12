@@ -16,7 +16,7 @@ export const metadata = getSEOTags({
       description: "Fun tool to send anonymous feedback—try it now!",
       images: [
         {
-          url: "https://utfs.io/f/Bilqtug6OUkPFIEVxRlS54E1zmK6tAd0ZRnIYDwpX2yvhrVP",
+          url: "/favicon.ico",
           width: 40,
           height: 40,
           alt: "Reflect Logo",
