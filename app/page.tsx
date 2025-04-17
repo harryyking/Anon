@@ -4,6 +4,12 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
+import { getSEOTags } from "@/lib/seo"
+
+
+export const metadata = getSEOTags({
+  canonicalUrlRelative: 'https://rflect.xyz'
+})
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0)
