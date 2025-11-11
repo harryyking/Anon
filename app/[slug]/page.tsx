@@ -91,9 +91,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
         {/* Owner-specific content */}
         {isOwner && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Profile stats/ratings */}
-            <div className="lg:col-span-1">
+            <div>
               {profileData ? (
                 <EmotionResults ratings={profileData} />
               ) : (
@@ -102,7 +102,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Messages */}
-            <div className="lg:col-span-2 space-y-4">
+            <div className="space-y-4">
               <h2 className="text-2xl font-bold text-white mb-4">Anonymous Messages</h2>
               {messages.length > 0 ? (
                 messages.map((message) => <AnonCard key={message.id} messages={message} />)
