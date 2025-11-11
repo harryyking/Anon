@@ -88,7 +88,7 @@ const EmotionResults = ({ title = "How people rated you", ratings }: EmotionResu
   // ... (rest of the component unchanged)
 
   return (
-    <div className="card w-full bg-base-100 shadow-xl text-neutral lg:max-w-3xl mx-auto">
+    <div className="card w-full bg-base-100 shadow-xl text-neutral">
       <div className="card-body">
         <h2 className="card-title text-center justify-center mb-4">{title}</h2>
         <div className="flex justify-center mb-6">
